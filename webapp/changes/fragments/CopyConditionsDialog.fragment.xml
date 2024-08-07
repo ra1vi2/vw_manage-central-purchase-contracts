@@ -1,0 +1,77 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:smartTable="sap.ui.comp.smarttable">
+	<Dialog id="idCopyConditionsDialog" title="{i18n>CopyConditionsText}">
+		<content>
+			<VBox id="idInputFieldsVBox">
+				<l:VerticalLayout id="idPlantLayout" class="sapUiSmallMargin">
+					<Label id="idPlantFieldLabel" text="{i18n>Plant}:" labelFor="idPlant" tooltip="{i18n>Plant}"/>
+					<Input id="idPlant" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handlePlantValueHelp"/>
+				</l:VerticalLayout>
+				<smartTable:SmartTable id="idCopyConditionsSmartTable" entitySet="C_CntrlPurContrItmCndnValdtyTP"
+					tableBindingPath="to_CntrlPurContrItmCndnValdtyTP" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false"
+					showRowCount="true" enableAutoBinding="true" demandPopin="true" useExportToExcel="false" header="{i18n>ConditionsTitle}"
+					requestAtLeastFields="DraftUUID,ParentDraftUUID">
+					<Table id="idCopyConditionResponsiveTable" mode="SingleSelectLeft" selectionChange="handleRadioButtonSelection">
+						<columns>
+							<!--Condition Type-->
+							<Column id="idConditionTypeColumn">
+								<Label id="idConditionTypeColumnLabel" text="{i18n>ConditionType}"/>
+								<customData>
+									<core:CustomData id="idConditionTypeCustomData" key="p13nData" value='\{"columnKey": "ConditionType", "leadingProperty": "ConditionType" \}'/>
+								</customData>
+							</Column>
+							<!--Condition Validity Start Date-->
+							<Column id="idConditionValidityStartDateColumn">
+								<Label id="idConditionValidityStartDateColumnLabel" text="{i18n>ValidFrom}"/>
+								<customData>
+									<core:CustomData id="idConditionValidityStartDateCustomData" key="p13nData"
+										value='\{"columnKey": "ConditionValidityStartDate", "leadingProperty": "ConditionValidityStartDate" \}'/>
+								</customData>
+							</Column>
+							<!--Condition Validity End Date-->
+							<Column id="idConditionValidityEndDateColumn">
+								<Label id="idConditionValidityEndDateColumnLabel" text="{i18n>ValidTo}"/>
+								<customData>
+									<core:CustomData id="idConditionValidityEndDateCustomData" key="p13nData"
+										value='\{"columnKey": "ConditionValidityEndDate", "leadingProperty": "ConditionValidityEndDate" \}'/>
+								</customData>
+							</Column>
+							<!--Plant-->
+							<Column id="idPlantColumn">
+								<Label id="idPlantColumnLabel" text="{i18n>Plant}"/>
+								<customData>
+									<core:CustomData id="idPlantCustomData" key="p13nData" value='\{"columnKey": "ProcmtHubPlant", "leadingProperty": "ProcmtHubPlant" \}'/>
+								</customData>
+							</Column>
+							<!--Source System Name-->
+							<Column id="idSourceSystemNameColumn">
+								<Label id="idSourceSystemNameColumnLabel" text="{i18n>SourceSystemName}"/>
+								<customData>
+									<core:CustomData id="idSourceSystemNameCustomData" key="p13nData"
+										value='\{"columnKey": "ProcurementHubSourceSystemName", "leadingProperty": "ProcurementHubSourceSystemName" \}'/>
+								</customData>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem id="idCopyConditionInnerTableListItem">
+								<Text id="idConditionTypeText" text="{ConditionType}"/>
+								<Text id="idConditionValidityStartDateText"
+									text="{path:'ConditionValidityStartDate', type:'sap.ui.model.type.DateTime', formatOptions: { pattern: 'MMM d,y' }}"/>
+								<Text id="idConditionValidityEndDateText"
+									text="{path:'ConditionValidityEndDate', type:'sap.ui.model.type.DateTime', formatOptions: { pattern: 'MMM d,y' }}"/>
+								<Text id="idPlantText" text="{ProcmtHubPlant}"/>
+								<Text id="idSourceSystemNameText" text="{ProcurementHubSourceSystemName}"/>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</smartTable:SmartTable>
+			</VBox>
+		</content>
+		<beginButton>
+			<Button id="idCopyButton" text="{i18n>CopyButtonText}" tooltip="{i18n>CopyButtonText}" enabled="{propertyModel>/bCopyButtonEnable}"
+				press="handleCopyButtonPress"/>
+		</beginButton>
+		<endButton>
+			<Button id="idCancelButton" text="{i18n>CancelButtonText}" tooltip="{i18n>CancelButtonText}" press="handleCopyConditionDialogClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

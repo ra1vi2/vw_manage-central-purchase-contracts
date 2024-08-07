@@ -1,0 +1,238 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.ui.table" xmlns:m="sap.m" xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout">
+	<uxap:ObjectPageSection id="idDemandManagementSection"
+		title="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>DemandManagementSection}" titleUppercase="false"
+		visible="{propertyModel>/bDemandManagementSectionVisible}">
+		<uxap:ObjectPageSubSection id="idDemandManagementSubsection">
+			<layout:VerticalLayout id="idDemandManagementLayout" class="sapUiContentPadding" width="100%">
+				<Table id="idDemandManagementTable" selectionMode="None" editable="false" rows="{ path:'DemandData>/' }" fixedColumnCount="6"
+					visibleRowCountMode="Auto" fixedBottomRowCount="1">
+					<columns>
+						<Column id="idProjectIdColumn" width="9rem">
+							<m:Label id="idProjectIdColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>ProjectID}"/>
+							<template>
+								<m:Text id="idProjectIdColumnText" text="{DemandData>SourcingProjectID}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idProjectNameColumn" width="9rem">
+							<m:Label id="idProjectNameColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>ProjectName}"/>
+							<template>
+								<m:Text id="idProjectNameColumnText" text="{DemandData>SouricngProjectName}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idLaunchDateColumn" width="9rem">
+							<m:Label id="idLaunchDateColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>LaunchDate}"/>
+							<template>
+								<m:Text id="idLaunchDateColumnText" text="{DemandData>ProductionDate}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idStatusColumn" width="6rem">
+							<m:Label id="idStatusColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Status}"/>
+							<template>
+								<m:Text id="idStatusColumnText" text="{DemandData>SourcingProjectStatus}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idDemandTypeColumn" width="8rem">
+							<m:Label id="idDemandTypeColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>DemandType}"/>
+							<template>
+								<m:Text id="idDemandTypeColumnText" text="{DemandData>DemandTypeText}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idUoMColumn" width="6rem">
+							<m:Label id="idUoMColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>UoM}"/>
+							<template>
+								<m:Text id="idUoMColumnText" text="{DemandData>UnitOfMeasure}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear1" width="5rem">
+							<m:Label id="idYear1ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year1}"/>
+							<template>
+								<m:Text id="idYear1ColumnText" text="{DemandData>DemandOfYear2020}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear2" width="5rem">
+							<m:Label id="idYear2ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year2}"/>
+							<template>
+								<m:Text id="idYear2ColumnText" text="{DemandData>DemandOfYear2021}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear3" width="5rem">
+							<m:Label id="idYear3ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year3}"/>
+							<template>
+								<m:Text id="idYear3ColumnText" text="{DemandData>DemandOfYear2022}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear4" width="5rem">
+							<m:Label id="idYear4ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year4}"/>
+							<template>
+								<m:Text id="idYear4ColumnText" text="{DemandData>DemandOfYear2023}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear5" width="5rem">
+							<m:Label id="idYear5ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year5}"/>
+							<template>
+								<m:Text id="idYear5ColumnText" text="{DemandData>DemandOfYear2024}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear6" width="5rem">
+							<m:Label id="idYear6ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year6}"/>
+							<template>
+								<m:Text id="idYear6ColumnText" text="{DemandData>DemandOfYear2025}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear7" width="5rem">
+							<m:Label id="idYear7ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year7}"/>
+							<template>
+								<m:Text id="idYear7ColumnText" text="{DemandData>DemandOfYear2026}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear8" width="5rem">
+							<m:Label id="idYear8ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year8}"/>
+							<template>
+								<m:Text id="idYear8ColumnText" text="{DemandData>DemandOfYear2027}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear9" width="5rem">
+							<m:Label id="idYear9ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year9}"/>
+							<template>
+								<m:Text id="idYear9ColumnText" text="{DemandData>DemandOfYear2028}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear10" width="5rem">
+							<m:Label id="idYear10ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year10}"/>
+							<template>
+								<m:Text id="idYear10ColumnText" text="{DemandData>DemandOfYear2029}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear11" width="5rem">
+							<m:Label id="idYear11ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year11}"/>
+							<template>
+								<m:Text id="idYear11ColumnText" text="{DemandData>DemandOfYear2030}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear12" width="5rem">
+							<m:Label id="idYear12ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year12}"/>
+							<template>
+								<m:Text id="idYear12ColumnText" text="{DemandData>DemandOfYear2031}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear13" width="5rem">
+							<m:Label id="idYear13ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year13}"/>
+							<template>
+								<m:Text id="idYear13ColumnText" text="{DemandData>DemandOfYear2032}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear14" width="5rem">
+							<m:Label id="idYear14ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year14}"/>
+							<template>
+								<m:Text id="idYear14ColumnText" text="{DemandData>DemandOfYear2033}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear15" width="5rem">
+							<m:Label id="idYear15ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year15}"/>
+							<template>
+								<m:Text id="idYear15ColumnText" text="{DemandData>DemandOfYear2034}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear16" width="5rem">
+							<m:Label id="idYear16ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year16}"/>
+							<template>
+								<m:Text id="idYear16ColumnText" text="{DemandData>DemandOfYear2035}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear17" width="5rem">
+							<m:Label id="idYear17ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year17}"/>
+							<template>
+								<m:Text id="idYear17ColumnText" text="{DemandData>DemandOfYear2036}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear18" width="5rem">
+							<m:Label id="idYear18ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year18}"/>
+							<template>
+								<m:Text id="idYear18ColumnText" text="{DemandData>DemandOfYear2037}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear19" width="5rem">
+							<m:Label id="idYear19ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year19}"/>
+							<template>
+								<m:Text id="idYear19ColumnText" text="{DemandData>DemandOfYear2038}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear20" width="5rem">
+							<m:Label id="idYear20ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year20}"/>
+							<template>
+								<m:Text id="idYear20ColumnText" text="{DemandData>DemandOfYear2039}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear21" width="5rem">
+							<m:Label id="idYear21ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year21}"/>
+							<template>
+								<m:Text id="idYear21ColumnText" text="{DemandData>DemandOfYear2040}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear22" width="5rem">
+							<m:Label id="idYear22ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year22}"/>
+							<template>
+								<m:Text id="idYear22ColumnText" text="{DemandData>DemandOfYear2041}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear23" width="5rem">
+							<m:Label id="idYear23ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year23}"/>
+							<template>
+								<m:Text id="idYear23ColumnText" text="{DemandData>DemandOfYear2042}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear24" width="5rem">
+							<m:Label id="idYear24ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year24}"/>
+							<template>
+								<m:Text id="idYear24ColumnText" text="{DemandData>DemandOfYear2043}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear25" width="5rem">
+							<m:Label id="idYear25ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year25}"/>
+							<template>
+								<m:Text id="idYear25ColumnText" text="{DemandData>DemandOfYear2044}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear26" width="5rem">
+							<m:Label id="idYear26ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year26}"/>
+							<template>
+								<m:Text id="idYear26ColumnText" text="{DemandData>DemandOfYear2045}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear27" width="5rem">
+							<m:Label id="idYear27ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year27}"/>
+							<template>
+								<m:Text id="idYear27ColumnText" text="{DemandData>DemandOfYear2046}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear28" width="5rem">
+							<m:Label id="idYear28ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year28}"/>
+							<template>
+								<m:Text id="idYear28ColumnText" text="{DemandData>DemandOfYear2047}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear29" width="5rem">
+							<m:Label id="idYear29ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year29}"/>
+							<template>
+								<m:Text id="idYear29ColumnText" text="{DemandData>DemandOfYear2048}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear30" width="5rem">
+							<m:Label id="idYear30ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year30}"/>
+							<template>
+								<m:Text id="idYear30ColumnText" text="{DemandData>DemandOfYear2049}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="idYear31" width="5rem">
+							<m:Label id="idYear31ColumnLabel" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>Year31}"/>
+							<template>
+								<m:Text id="idYear31ColumnText" text="{DemandData>DemandOfYear2050}" wrapping="false"/>
+							</template>
+						</Column>
+					</columns>
+				</Table>
+			</layout:VerticalLayout>
+		</uxap:ObjectPageSubSection>
+	</uxap:ObjectPageSection>
+</core:FragmentDefinition>

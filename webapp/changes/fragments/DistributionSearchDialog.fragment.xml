@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable">
+	<Dialog id="idDistributionSearchDialog" class="sapUiResponsiveContentPadding" draggable="true" resizable="true" contentWidth="60%"
+		title="{= ${distributionModel>/showAddBtn} ? ${i18n|sap.suite.ui.generic.template.ObjectPage|C_CentralPurchaseContractTP>AddDistributionSearchDialogLabel} : ${i18n|sap.suite.ui.generic.template.ObjectPage|C_CentralPurchaseContractTP>CopyDistributionSearchDialogLabel} }">
+		<smartFilterBar:SmartFilterBar id="idDistributionSearchFilterBar" persistencyKey="UniqueAndStablePersistencyKey"
+			considerSelectionVariants="true" entitySet="xVWKSxNLP_CCTR_C_ADD_DL_BTN_VH" enableBasicSearch="true" basicSearchFieldName="BrandID"
+			showClearButton="true">
+			<smartFilterBar:layoutData>
+				<FlexItemData shrinkFactor="0"/>
+			</smartFilterBar:layoutData>
+		</smartFilterBar:SmartFilterBar>
+		<smartTable:SmartTable id="idDistributionSearchSmartTable" entitySet="xVWKSxNLP_CCTR_C_ADD_DL_BTN_VH" tableType="TreeTable"
+			showFullScreenButton="true" class="sapUiMediumMarginBottom" smartFilterId="DistributionSearchHelpDialog--idDistributionSearchFilterBar"
+			useExportToExcel="false" useVariantManagement="false" demandPopin="true" direction="Column" editable="false" showRowCount="true"
+			enableAutoBinding="true" beforeRebindTable="onBeforeRebindTable"
+			requestAtLeastFields="HierarchyNodeLevel,FormatedCcode,ParentNode,DrillDownState,SuprCode,Ccode" noData="{i18n>NoDataText}">
+			<smartTable:customToolbar>
+				<Toolbar id="idDistributionSearchToolbar">
+					<ToolbarSpacer id="idDistributionSearchSpacer"/>
+					<Button id="idExpandBtn" icon="sap-icon://expand-all" type="Transparent"
+						tooltip="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CentralPurchaseContractTP>ExpandAll}" press="handleDistributionSearchExapndAll"/>
+					<Button id="idCollapseBtn" icon="sap-icon://collapse-all" type="Transparent"
+						tooltip="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CentralPurchaseContractTP>CollapseAll}"
+						press="handleDistributionSearchCollapseAll"/>
+				</Toolbar>
+			</smartTable:customToolbar>
+		</smartTable:SmartTable>
+		<buttons>
+			<Button id="idAddDialogBtn" type="Emphasized" visible="{distributionModel>/showAddBtn}"
+				text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CentralPurchaseContractTP>CustomDistributionDialogAddBtn}"
+				tooltip="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CentralPurchaseContractTP>CustomDistributionDialogAddBtn}"
+				press="handleDistributionSearchHelpAdd"/>
+			<Button id="idCopyDialogBtn" type="Emphasized" visible="{= !${distributionModel>/showAddBtn}}"
+				text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CentralPurchaseContractTP>CopyBtnLabel}"
+				tooltip="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CentralPurchaseContractTP>CopyBtnLabel}" press="handleDistributionSearchHelpCopy"/>
+			<Button id="idCancelDialogBtn"
+				text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CentralPurchaseContractTP>CustomDistributionDialogCloseBtn}"
+				tooltip="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CentralPurchaseContractTP>CustomDistributionDialogCloseBtn}"
+				press="handleDistributionSearchDialogClose"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

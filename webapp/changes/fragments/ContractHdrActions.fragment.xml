@@ -1,0 +1,9 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core='sap.ui.core' xmlns="sap.m">
+	<Button 
+		id="idCtrPFORelatedLinkBtn"
+		text="{i18n>PFORelatedLink}" 
+		icon="sap-icon://process"
+		press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.onPFOLinkPress">
+	</Button>
+</core:FragmentDefinition>

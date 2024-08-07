@@ -1,0 +1,188 @@
+{
+	"fileName": "manifest",
+	"layer": "VENDOR",
+	"fileType": "appdescr_variant",
+	"reference": "ui.s2p.mm.pur.central.ctr.sts1",
+	"id": "vwks.nlp.s2p.mm.pctrcentral.manage",
+	"namespace": "apps/ui.s2p.mm.pur.central.ctr.sts1/appVariants/vwks.nlp.s2p.mm.pctrcentral.manage/",
+	"version": "1.0.0",
+	"content": [
+		{
+			"changeType": "appdescr_ui5_addLibraries",
+			"content": {
+				"libraries": {
+					"vwks.nlp.s2p.mm.reuse.lib": {
+				        "minVersion": "1.0.0",
+				        "lazy": false
+				    }
+				}
+			}
+		},
+		{
+			"changeType": "appdescr_app_addNewOutbound",
+			"content": {
+				"outbound": {
+					"Supplier": {
+						"semanticObject": "Supplier",
+            			"action": "displayFactSheet"
+					}
+				}
+			}
+		},
+		{
+			"changeType": "appdescr_app_addNewOutbound",
+			"content": {
+				"outbound": {
+					"MCPC": {
+						"semanticObject": "CentralPurchaseContract",
+            			"action": "manage"
+					}
+				}
+			}
+		},
+		{
+			"changeType": "appdescr_app_addNewOutbound",
+			"content": {
+				"outbound": {
+					"CreateContractDistribution": {
+						"semanticObject": "CentralPurContractDistribution",
+            			"action": "createRequest"
+					}
+				}
+			}
+		},
+		{
+			"changeType": "appdescr_app_addNewOutbound",
+			"content": {
+				"outbound": {
+					"PFO": {
+						"semanticObject": "ProcessFlow",
+            			"action": "overview"
+					}
+				}
+			}
+		},
+		{
+			"changeType": "appdescr_app_addNewOutbound",
+			"content": {
+				"outbound": {
+					"PMAT": {
+						"semanticObject": "PMaterial",
+            			"action": "manage"
+					}
+				}
+			}
+		},
+		{
+			"changeType": "appdescr_app_addNewOutbound",
+			"content": {
+				"outbound": {
+					"MPRC": {
+						"semanticObject": "ProcurementHubPRItem",
+            			"action": "manage"
+					}
+				}
+			}
+		},
+		{
+			"changeType": "appdescr_app_addNewOutbound",
+			"content": {
+				"outbound": {
+					"SourcingProject": {
+						"semanticObject": "SourcingProject",
+            			"action": "manage"
+					}
+				}
+			}
+		},
+		{
+			"changeType": "appdescr_app_setTitle",
+			"content": {},
+			"texts": {
+				"i18n": "i18n/i18n.properties"
+			}
+		},
+		{
+			"changeType": "appdescr_ui5_addNewModelEnhanceWith",
+			"content": {
+				"modelId": "i18n|sap.suite.ui.generic.template.ListReport|C_CentralPurchaseContractTP"
+			},
+			"texts": {
+				"i18n": "i18n/ListReport/C_CentralPurchaseContractTP/i18n.properties"
+			}
+		},
+		{
+			"changeType": "appdescr_ui5_addNewModelEnhanceWith",
+			"content": {
+				"modelId": "i18n|sap.suite.ui.generic.template.ObjectPage|C_CentralPurchaseContractTP"
+			},
+			"texts": {
+				"i18n": "i18n/ObjectPage/C_CentralPurchaseContractTP/i18n.properties"
+			}
+		},
+		{
+			"changeType": "appdescr_ui5_addNewModelEnhanceWith",
+			"content": {
+				"modelId": "i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP"
+			},
+			"texts": {
+				"i18n": "i18n/ObjectPage/C_CntrlPurchaseContractItemTP/i18n.properties"
+			}
+		},
+		{
+			"changeType": "appdescr_ui5_addNewModelEnhanceWith",
+			"content": {
+				"modelId": "i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrHierHdrTP"
+			},
+			"texts": {
+				"i18n": "i18n/ObjectPage/C_CntrlPurContrHierHdrTP/i18n.properties"
+			}
+		},
+		{
+			"changeType": "appdescr_ui5_addNewModelEnhanceWith",
+			"content": {
+				"modelId": "i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrHierItemTP"
+			},
+			"texts": {
+				"i18n": "i18n/ObjectPage/C_CntrlPurchaseContractItemTP/i18n.properties"
+			}
+		},
+		{
+			"changeType": "appdescr_ui5_addNewModelEnhanceWith",
+			"content": {
+				"modelId": "i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP"
+			},
+			"texts": {
+				"i18n": "i18n/ObjectPage/C_CntrlPurContrItmCndnAmountTP/i18n.properties"
+			}
+		},
+		{
+			"changeType": "appdescr_fiori_setRegistrationIds",
+			"content": {
+				"registrationIds": [
+					"F3144"
+				]
+			}
+		},
+		{
+			"changeType": "appdescr_app_setAch",
+			"content": {
+				"ach": "XX-PROJ-CDP-TEST-808"
+			}
+		},
+		{
+			"changeType": "appdescr_app_addAnnotationsToOData",
+			"content": {
+				"dataSourceId" : "mainService",
+				"annotations" : ["customAnnotations"],
+				"annotationsInsertPosition": "END",
+				"dataSource": {
+				    "customAnnotations": {
+				        "uri": "changes/annotations/annotations.xml",
+				        "type": "ODataAnnotation"
+				    }
+				}
+			}
+		}
+	]
+}

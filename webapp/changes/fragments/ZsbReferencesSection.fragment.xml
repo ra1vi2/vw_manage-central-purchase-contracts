@@ -1,0 +1,37 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:layout="sap.ui.layout">
+	<uxap:ObjectPageSection id="idZsbReferencesSection" title="{RefZSBFacetDesc}" titleUppercase="false" visible="{showRefZSBFacet}">
+		<uxap:ObjectPageSubSection id="idZsbReferencesSubSection">
+			<layout:VerticalLayout id="idZsbReferencesLayout" class="sapUiContentPadding" width="100%">
+				<smartTable:SmartTable id="idZsbReferencesSmartTable" entitySet="xVWKSxNLO_CCTR_I_REF_ZSB" tableType="ResponsiveTable"
+					useTablePersonalisation="true" tableBindingPath="to_RefZSBArea" showRowCount="true" enableAutoBinding="true" useExportToExcel="true"
+					class="sapUiResponsiveContentPadding"
+					beforeRebindTable=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.onBeforeZsbRefRebindTable">
+					<OverflowToolbar id="idZsbRefToolbar">
+						<ComboBox id="idRefPlantComboBox" change=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.onRefPlantChange"
+							placeholder="{i18n>Plants}"/>
+					</OverflowToolbar>
+					<Table id="idZsbRefInnerTable">
+						<columns>
+							<Column id="idZsbRefContractItemColumn" width="10rem">
+								<Label id="idZsbRefContractItemColumnLabel"
+									text="{/#xVWKSxNLO_CCTR_I_REF_ZSBType/CentralContract/@sap:label} / {/#xVWKSxNLO_CCTR_I_REF_ZSBType/CentralContractItem/@sap:label}"
+									tooltip="{/#xVWKSxNLO_CCTR_I_REF_ZSBType/CentralContract/@sap:label} / {/#xVWKSxNLO_CCTR_I_REF_ZSBType/CentralContractItem/@sap:label}"></Label>
+								<customData>
+									<core:CustomData id="idZSBRefContractCustomData" key="p13nData"
+										value='\{"columnKey": "CentralContractItem", "leadingProperty": "ContractNumberItemUniqueId", "columnIndex": "6" \}'/>
+								</customData>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem id="idZsbInnerTableListItem">
+								<Text id="idZsbRefContractItemText" text="{CentralContract} / {CentralContractItem}"/>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</smartTable:SmartTable>
+			</layout:VerticalLayout>
+		</uxap:ObjectPageSubSection>
+	</uxap:ObjectPageSection>
+</core:FragmentDefinition>

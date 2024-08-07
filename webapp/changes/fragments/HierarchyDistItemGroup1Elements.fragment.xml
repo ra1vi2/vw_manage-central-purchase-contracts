@@ -1,0 +1,21 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:smartform="sap.ui.comp.smartform" xmlns:smartfield="sap.ui.comp.smartfield">
+	<!-- Minimum Order Quantity in Hierarchial Contract-->
+	<smartform:GroupElement id="idMinimumOrderQuantityHierarchicalGroupElement" visible="{QtyVisFlag}">
+		<smartform:elements>
+			<smartfield:SmartField id="idMinimumOrderHierarchicalQuantity" value="{MinOrderQty}" editable="{ui>/editable}"/>
+		</smartform:elements>
+	</smartform:GroupElement>
+	<!-- Maximum Order Quantity in Hierarchial Contract-->
+	<smartform:GroupElement id="idMaximumOrderHierarchicalQuantityGroupElement" visible="{QtyVisFlag}">
+		<smartform:elements>
+			<smartfield:SmartField id="idMaximumHierarchicalQuantity" value="{MaxOrderQty}" editable="{ui>/editable}"/>
+		</smartform:elements>
+	</smartform:GroupElement>
+	<!-- Spare Part Relevant indicator on Item Distribution -->
+	<smartform:GroupElement id="idHierarchicalDistributionSparePartRelevantGroupElement" visible="{SprPrtVisFLag}">
+		<smartform:elements>
+			<smartfield:SmartField id="idHierarchicalDistributionSparePartRelevant" value="{SparePartRlvnt}" editable="false"/>
+		</smartform:elements>
+	</smartform:GroupElement>
+</core:FragmentDefinition>

@@ -1,0 +1,29 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition 
+	xmlns:core="sap.ui.core"
+	xmlns:smartform="sap.ui.comp.smartform"
+	xmlns="sap.m">
+	<smartform:GroupElement id="idHierAlternativePartsGroupElement"  visible="{= ${AltPartsPopup_FC} === 1}">
+		<smartform:elements>
+			<VBox 
+				id="idHierAlternativePartsVBox">
+				<HBox id="idHierAlternativePartsLabelHBox">
+					<Label 
+						id="idHierAlternativePartsLabel" 
+						text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>AlternativePartsLabel}" />
+				</HBox>
+				<HBox id="idHierAlternativePartsLinkHBox">
+					<Text 
+						id="idHierAlternativePartsText" 
+						text="{AlternativeParts}"
+						visible="{= ${AlternativeParts} !== 'Multiple' }"/>
+					<Link 
+						id="idHierAlternativePartsLink"
+						visible="{= ${AlternativeParts} === 'Multiple' }"
+						text="{AlternativeParts}"
+						press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.onAlternativePartsLinkPress"/>
+				</HBox>
+			</VBox>
+		</smartform:elements>
+	</smartform:GroupElement>
+</core:FragmentDefinition>

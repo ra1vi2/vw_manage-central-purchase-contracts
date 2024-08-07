@@ -1,0 +1,17 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<!-- Purchase Requisition and Item-->
+	<Column id="idPRNumCol">
+		<Text id="idPRNumColText" text="{/#C_CntrlPurContrDistributionTPType/PRItem/@sap:label}"/>
+		<customData>
+			<core:CustomData id="idPRNumCustomData" key="p13nData" value='\{"columnKey": "PRItem", "leadingProperty": "PRItem", "columnIndex": "17"}'/>
+		</customData>
+	</Column>
+	<!-- Sourcing Project and Item-->
+	<Column id="idSPNumCol">
+		<Text id="idSPNumColText" text="{/#C_CntrlPurContrDistributionTPType/SPItem/@sap:label}"/>
+		<customData>
+			<core:CustomData id="idSPNumCustomData" key="p13nData" value='\{"columnKey": "SPItem", "leadingProperty": "SPItem", "columnIndex": "18"}'/>
+		</customData>
+	</Column>
+</core:FragmentDefinition>

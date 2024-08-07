@@ -1,0 +1,35 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap" xmlns:smartform="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield">
+	<uxap:ObjectPageSubSection id="idSupplierDevCostsSubSection" title="{i18n>SupplierDevCostsSubSection}" visible="{Uict_SupplDevCost}">
+		<smartform:SmartForm id="idSupplierDevCostsSmartForm" editable="{ui>/editable}">
+			<smartform:groups>
+				<smartform:Group id="idSupplierDevCostsGroup">
+					<smartform:groupElements>
+						<!-- Amortization Year -->
+						<smartform:GroupElement id="idAmortizationYearGroupElement">
+							<smartform:elements>
+								<smartField:SmartField id="idAmortizationYear" value="{AmortizationYear}" mandatory="true"/>
+							</smartform:elements>
+						</smartform:GroupElement>
+						<!-- Amortization Quantity -->
+						<smartform:GroupElement id="idAmortizationQtyGroupElement">
+							<smartform:elements>
+								<smartField:SmartField id="idAmortizationQty" value="{AmortQty}" mandatory="true"/>
+							</smartform:elements>
+						</smartform:GroupElement>
+						<!-- Actual Quantity -->
+						<smartform:GroupElement id="idActualQtyGroupElement">
+							<smartform:elements>
+								<smartField:SmartField id="idActualQty" value="{ActualQty}"/>
+							</smartform:elements>
+						</smartform:GroupElement>
+					</smartform:groupElements>
+				</smartform:Group>
+			</smartform:groups>
+			<smartform:layout>
+				<smartform:ColumnLayout id="idSupplierDevCostsColLayout" columnsM="2" columnsL="3" columnsXL="4" labelCellsLarge="12"/>
+			</smartform:layout>
+		</smartform:SmartForm>
+	</uxap:ObjectPageSubSection>
+</core:FragmentDefinition>

@@ -1,0 +1,41 @@
+{
+	"fileName": "id_1612246053073_908_addXML",
+	"fileType": "change",
+	"changeType": "addXML",
+	"moduleName": "",
+	"reference": "vwks.nlp.s2p.mm.pctrcentral.manage",
+	"packageName": "$TMP",
+	"content": {
+		"targetAggregation": "subSections",
+		"index": 2,
+		"fragmentPath": "fragments/OrderingMeasuredWeightSubSection.fragment.xml"
+	},
+	"selector": {
+		"id": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrHierItemTP--to_CntrlPurContrItmCmmdtyQtyTP::com.sap.vocabularies.UI.v1.LineItem::Section",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {},
+	"namespace": "apps/ui.s2p.mm.pur.central.ctr.sts1/appVariants/vwks.nlp.s2p.mm.pctrcentral.manage/changes/",
+	"projectId": "vwks.nlp.s2p.mm.pctrcentral.manage",
+	"creation": "2021-02-02T06:07:56.705Z",
+	"originalLanguage": "EN",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.78.9",
+		"sourceChangeFileName": "",
+		"compositeCommand": ""
+	},
+	"oDataInformation": {},
+	"dependentSelector": {},
+	"validAppVersions": {
+		"creation": "1.0.0",
+		"from": "1.0.0",
+		"to": "1.0.0"
+	},
+	"jsOnly": false,
+	"variantReference": "",
+	"appDescriptorChange": false
+}

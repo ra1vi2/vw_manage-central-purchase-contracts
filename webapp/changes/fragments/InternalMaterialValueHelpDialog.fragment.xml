@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:smarttable="sap.ui.comp.smarttable" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:core="sap.ui.core">
+	<Dialog contentWidth="80%" contentHeight="60%" horizontalScrolling="false" verticalScrolling="true" title="{i18n>VHTitle}"
+		class="sapUiResponsiveContentPadding">
+		<VBox fitContainer="true">
+			<smartFilterBar:SmartFilterBar id="idInternalMaterialSmartFilterBar" entitySet="xVWKSxNLP_CCTR_I_RAWMATVH" useToolbar="true"
+				showFilterConfiguration="true" advancedMode="true" enableBasicSearch="true" filterBarExpanded="true" basicSearchFieldName="CommodityName"></smartFilterBar:SmartFilterBar>
+			<smarttable:SmartTable id="idInternalMaterialSmartTable" initialise="onInitialiseInternalMaterialSmartTable"
+				beforeRebindTable="onInternalMaterialRebindTable" header="{i18n>ItemsVHLabel}" tableType="ResponsiveTable"
+				entitySet="xVWKSxNLP_CCTR_I_RAWMATVH" useTablePersonalisation="false"
+				initiallyVisibleFields="CommodityName,purgdoccmmdtyqtyvalidfromdate,purgdoccmmdtyqtyvalidtodate,commodityquantity,commodityunit"
+				requestAtLeastFields="purgdoccmmdtyqtysqntlnumber" useExportToExcel="false" useVariantManagement="false" showRowCount="true"></smarttable:SmartTable>
+		</VBox>
+		<buttons>
+			<Button type="Emphasized" text="{i18n>OKBtnLabel}" press="onInternalMaterialOK"/>
+			<Button text="{i18n>CancelBtnLabel}" press="onInternalMaterialClose"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

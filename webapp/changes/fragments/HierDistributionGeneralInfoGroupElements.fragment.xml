@@ -1,0 +1,21 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:smartform="sap.ui.comp.smartform">
+	<!-- Purchase Requisition and Item-->
+	<smartform:GroupElement id="idHierPRNumGroupElement">
+		<smartform:elements>
+			<VBox id="idHierPRNumVBox">
+				<Label id="idHierPRNumLabel" text="{/#C_CntrlPurContrDistributionTPType/PRItem/@sap:label}"/>
+				<Link id="idHierPRNumLink" text="{PRItem}" press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handlePRNumLinkPress"/>
+			</VBox>
+		</smartform:elements>
+	</smartform:GroupElement>
+	<!-- Sourcing Project and Item-->
+	<smartform:GroupElement id="idHierSPNumGroupElement">
+		<smartform:elements>
+			<VBox id="idHierSPNumVBox">
+				<Label id="idHierSPNumLabel" text="{/#C_CntrlPurContrDistributionTPType/SPItem/@sap:label}"/>
+				<Link id="idHierSPNumLink" text="{SPItem}" press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handleSPNumLinkPress"/>
+			</VBox>
+		</smartform:elements>
+	</smartform:GroupElement>
+</core:FragmentDefinition>

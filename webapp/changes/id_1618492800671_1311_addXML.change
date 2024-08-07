@@ -1,0 +1,41 @@
+{
+	"fileName": "id_1618492800671_1311_addXML",
+	"fileType": "change",
+	"changeType": "addXML",
+	"moduleName": "",
+	"reference": "vwks.nlp.s2p.mm.pctrcentral.manage",
+	"packageName": "$TMP",
+	"content": {
+		"targetAggregation": "subSections",
+		"index": 2,
+		"fragmentPath": "fragments/HierarchySupplierDevCostsSubSection.fragment.xml"
+	},
+	"selector": {
+		"id": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrHierItemTP--sap.cus.sd.lib.item.cndn.forSmartElements::item::C_CPurConHierItmCndnAmountTP:C_CntrlPurContrItmPrcSimln::ComponentSection",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {},
+	"namespace": "apps/ui.s2p.mm.pur.central.ctr.sts1/appVariants/vwks.nlp.s2p.mm.pctrcentral.manage/changes/",
+	"projectId": "vwks.nlp.s2p.mm.pctrcentral.manage",
+	"creation": "2021-04-15T13:24:26.391Z",
+	"originalLanguage": "EN",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.78.8",
+		"sourceChangeFileName": "",
+		"compositeCommand": ""
+	},
+	"oDataInformation": {},
+	"dependentSelector": {},
+	"validAppVersions": {
+		"creation": "1.0.0",
+		"from": "1.0.0",
+		"to": "1.0.0"
+	},
+	"jsOnly": false,
+	"variantReference": "",
+	"appDescriptorChange": false
+}

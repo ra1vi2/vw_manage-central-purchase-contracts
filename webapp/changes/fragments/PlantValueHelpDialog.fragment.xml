@@ -1,0 +1,4 @@
+<core:FragmentDefinition id="idPlantFragment" xmlns="sap.ui.comp.valuehelpdialog" xmlns:core="sap.ui.core">
+	<ValueHelpDialog id="idPlantVH" title="{i18n>Plant}" cancel="handlePlantVHCancel" ok="handlePlantVHOk" afterClose="handlePlantVHAfterClose"
+		supportMultiselect="false" key="ProcmtHubPlant" descriptionKey="ProcmtHubPlantName"/>
+</core:FragmentDefinition>

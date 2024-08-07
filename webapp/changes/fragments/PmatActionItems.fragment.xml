@@ -1,0 +1,33 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:layout="sap.ui.layout">
+	<uxap:ObjectPageSection id="idPmatActionItemsSection" title="{i18n>PmatActionItems}" titleUppercase="false">
+		<uxap:ObjectPageSubSection id="idPmatActionItemsSubSection">
+			<layout:VerticalLayout id="idPmatActionItemsLayout" class="sapUiContentPadding" width="100%">
+				<smartTable:SmartTable id="idPmatActionItemsSmartTable" header="{i18n>PmatActionItemsHeader}" entitySet="xVWKSxNLP_C_PMAT_CCTR_REF_DATA"
+					tableBindingPath="to_PmatCCTR" tableType="ResponsiveTable" useTablePersonalisation="true" showRowCount="true" enableAutoBinding="true"
+					useExportToExcel="false" class="sapUiResponsiveContentPadding">
+					<Table id="idPmatActionItemsInnerTable">
+						<columns>
+							<Column id="idPmatKeyLinkColumn">
+								<Label id="idPmatKeyLinkColumnLabel" text="{/#xVWKSxNLP_C_PMAT_CCTR_REF_DATAType/KeyLink/@sap:label}"></Label>
+								<customData>
+									<core:CustomData id="idPmatKeyLinkCustomData" key="p13nData"
+										value='\{"columnKey": "KeyLink", "leadingProperty": "KeyLink", "columnIndex" : "0" \}'/>
+								</customData>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem id="idInnerPmatActionItemsTableListItem">
+								<cells>
+									<Link id="idPmatKeyLinkText" text="{KeyLink}" press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handlePmatKeyLinkPress"
+										wrapping="false"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</smartTable:SmartTable>
+			</layout:VerticalLayout>
+		</uxap:ObjectPageSubSection>
+	</uxap:ObjectPageSection>
+</core:FragmentDefinition>

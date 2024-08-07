@@ -1,0 +1,19 @@
+{
+	"fileName": "id_1645427660203_518_defaultVariant",
+	"fileType": "change",
+	"changeType": "defaultVariant",
+	"layer": "CUSTOMER_BASE",
+	"content": {
+		"defaultVariantName": "id_1645439016069_517_table"
+	},
+	"namespace": "apps/vwks.nlp.s2p.mm.pctrcentral.manage/changes/",
+	"reference": "vwks.nlp.s2p.mm.pctrcentral.manage",
+	"selector": {
+		"persistencyKey": "SmartTablePKey"
+	},
+	"support": {
+		"generator": "CompVariantState.defaultVariant",
+		"sapui5Version": "1.96.0"
+	},
+	"creation": "2022-02-21T10:23:36.236Z"
+}

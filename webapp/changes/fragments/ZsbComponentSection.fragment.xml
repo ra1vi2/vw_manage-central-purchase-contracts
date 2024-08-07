@@ -1,0 +1,25 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:layout="sap.ui.layout" xmlns:table="sap.ui.table" xmlns:smartfield="sap.ui.comp.smartfield"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<uxap:ObjectPageSection id="idZsbComponentSection" title="{ZSBFacetDesc}" titleUppercase="false" visible="{showZSBFacet}">
+		<uxap:ObjectPageSubSection id="idZsbComponentSubSection">
+			<layout:VerticalLayout id="idZsbComponentLayout" class="sapUiContentPadding" width="100%">
+				<HBox id="idDateHbox" width="100%">
+					<HBox id="idDateHboxBomDate" justifyContent="SpaceBetween" width="30%">
+						<ObjectStatus id="idLastBomDate" title="{i18n>LastBomDateLabel}"
+							text="{=${LastBOMUpdate} ? ${path: 'LastBOMUpdate', type: 'sap.ui.model.type.DateTime'} : ${i18n>NotUpdated} }"/>
+					</HBox>
+					<HBox id="idDateHboxCtrDate" justifyContent="SpaceBetween" width="30%">
+						<ObjectStatus id="idLastCtrUpdateDate" title="{i18n>LastCtrUpdateLabel}"
+							text="{=${LastCTRUpdate} ? ${path: 'LastCTRUpdate', type: 'sap.ui.model.type.DateTime'} : ${i18n>NotUpdated} }"/>
+					</HBox>
+					<HBox id="idDateHboxPriceDate" justifyContent="SpaceBetween" width="30%">
+						<ObjectStatus id="idLastPriceUpdate" title="{i18n>LastPriceUpdateLabel}" visible="{= ! ${ZSBLaw_Flag} }"
+							text=" {=${LastPriceUpdate} ? ${path: 'LastPriceUpdate', type: 'sap.ui.model.type.DateTime'} : ${i18n>NotUpdated} }"/>
+					</HBox>
+				</HBox>
+			</layout:VerticalLayout>
+		</uxap:ObjectPageSubSection>
+	</uxap:ObjectPageSection>
+</core:FragmentDefinition>

@@ -1,0 +1,46 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<uxap:ObjectPageSection id="idRMSTableSection" title="{i18n>ManualRMSSection}" titleUppercase="false">
+		<uxap:ObjectPageSubSection id="idRMSTableSubSection">
+			<smartTable:SmartTable id="idRMSTableSmartTable" tableType="ResponsiveTable"
+				beforeRebindTable=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.onBeforeRebindRMSTable" showRowCount="true"
+				header="{i18n>ManualRMSTable}" entitySet="xVWKSxNLP_CCTR_C_CCTR_MAN_RMS" tableBindingPath="to_RMSData" demandPopin="true"
+				useExportToExcel="true" useVariantManagement="true" useTablePersonalisation="true" requestAtLeastFields="MaterialIdentNumber"
+				enableAutoBinding="true" class="sapUiResponsiveContentPadding" customData:useSmartField="true" editable="{ui>/editable}">
+				<smartTable:customToolbar>
+					<OverflowToolbar id="idRMSToolbar">
+						<ToolbarSpacer id="idRMSToolbarSpacer"/>
+						<Button id="idDeleteBtn" text="{i18n>Delete}" tooltip="{i18n>Delete}" type="Transparent" visible="{ui>/editable}"
+							enabled="{propertyModel>/bManualRMSDeleteBtnEnable}" press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handleDeleteRMS"/>
+						<Button id="idCreateBtn" text="{i18n>Create}" tooltip="{i18n>Create}" type="Transparent" visible="{ui>/editable}"
+							press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handleCreateRMS"/>
+					</OverflowToolbar>
+				</smartTable:customToolbar>
+				<Table id="idManualRMSInternalTable" mode="{=${ui>/editable} === true ? 'MultiSelect' : 'None'}">
+					<columns>
+						<Column id="idMaterialIdentNumberCustomColumn">
+							<Text id="idMaterialIdentNumberCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_C_CCTR_MAN_RMSType/MaterialIdentNumber/@sap:label}"/>
+							<customData>
+								<core:CustomData id="idMaterialIndentNumberCustomData" key="p13nData"
+									value='\{"columnKey": "MaterialIdentNumber","columnIndex":"0","leadingProperty": "MaterialIdentNumber"}'/>
+							</customData>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="idManualRMSCustomColumnList">
+							<cells>
+								<HBox id="idManualRMSHBox">
+									<Input id="idMaterialIdentNumberColumnInput" value="{MaterialIdentNumber}"
+										valueHelpRequest=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.onInternalMaterialValueHelpRequest" showSuggestion="true"
+										showValueHelp="true" valueHelpOnly="true" visible="{ui>/editable}"></Input>
+									<Text id="idMaterialIdentNumberCustomColumnValue" text="{MaterialIdentNumber}" visible="{= ${ui>/editable} ? false : true}"></Text>
+								</HBox>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</smartTable:SmartTable>
+		</uxap:ObjectPageSubSection>
+	</uxap:ObjectPageSection>
+</core:FragmentDefinition>

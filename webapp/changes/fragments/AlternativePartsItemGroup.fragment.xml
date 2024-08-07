@@ -1,0 +1,41 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:smartform="sap.ui.comp.smartform" xmlns="sap.m">
+	<smartform:GroupElement id="idItemAlternativePartsGroupElement" visible="{= ${AltPartsPopup_FC} === 1}">
+		<smartform:elements>
+			<VBox id="idItemAlternativePartsVBox">
+				<HBox id="idItemAlternativePartsLabelHBox">
+					<Label id="idItemAlternativePartsLabel"
+						text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>AlternativePartsLabel}"/>
+				</HBox>
+				<HBox id="idItemAlternativePartsLinkHBox">
+					<Text id="idItemAlternativePartsText" text="{AlternativeParts}" visible="{= ${AlternativeParts} !== 'Multiple' }"/>
+					<Link id="idItemAlternativePartsLink" visible="{= ${AlternativeParts} === 'Multiple' }" text="{AlternativeParts}"
+						press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.onAlternativePartsLinkPress"/>
+				</HBox>
+			</VBox>
+		</smartform:elements>
+	</smartform:GroupElement>
+	<smartform:GroupElement id="idItemOverallQuotaGroupElement" >
+		<smartform:elements>
+			<VBox id="idItemOverallQuotaVBox" visible="{= ${Quota_FC} === 0 ? false : true}">
+				<HBox id="idItemOverallQuotaHBoxLabel">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>OverallQuotaItemLabel}" id="idItemOverAllQuotaLabel"/>
+				</HBox>
+				<HBox id="idItemOverallQuotaHBoxTextIcon">
+					<ObjectStatus id="idItemQuotaStatusIcon" icon="{path:'xVWKSxNlpOveralQuota', formatter:'.extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.getOveralQuotaIconFormatter'}" 
+					state="{path: 'xVWKSxNlpOveralQuota', formatter:'.extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.getOveralQuotaStatusFormatter'}"
+					active="false"
+					tooltip="{path:'xVWKSxNlpOveralQuota', formatter:'.extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.formatterOverallQuotaTooltip'}"/>
+					<core:Icon id="idItemOverallQuotaInfoIconDisplay" src="sap-icon://message-information" color="#346187"
+						press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handleOverallQuotaInfoIconPress"
+						tooltip="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>OverallQuotaIconText}"
+						visible="{= ${ui>/editable} === false}" class="sapUiSmallMarginBegin"/>
+					<core:Icon id="idItemOverallQuotaInfoIconEdit" src="sap-icon://message-information" color="#346187"
+						press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handleOverallQuotaInfoIconPress"
+						tooltip="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>OverallQuotaIconText}"
+						visible="{= ${ui>/editable} === true}" class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+				</HBox>
+			</VBox>
+		</smartform:elements>
+	</smartform:GroupElement>
+</core:FragmentDefinition>

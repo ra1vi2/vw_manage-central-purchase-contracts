@@ -1,0 +1,52 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core='sap.ui.core' xmlns="sap.m" xmlns:smartform="sap.ui.comp.smartform"
+	xmlns:smartfield="sap.ui.comp.smartfield">
+	<!--Supplier Overall Status-->
+	<smartform:GroupElement 
+		id="idSupplierOverallStatusTextGroupElement"
+		visible="{= !${SupplierOverallStatus} }" 
+		label="{i18n>SupplierOverallStatusLabel}">
+		<smartform:elements>
+			<Text id="idNATextSupplierOverallStatus" text="{i18n>SSTLStatusNA}" tooltip="{i18n>SSTLStatusNADesc}"/>
+		</smartform:elements>
+	</smartform:GroupElement>
+	<smartform:GroupElement 
+		id="idSupplierOverallStatusIconGroupElement"
+		visible="{= !!${SupplierOverallStatus} }"
+		label="{i18n>SupplierOverallStatusLabel}">
+		<smartform:elements>
+			<core:Icon id="idSupplierOverallStatus" width="1.25rem" 
+				tooltip="{ path: 'SupplierOverallStatus', formatter: '.extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.getSupplierOverallStatusTooltip' }"
+				src="{ path: 'SupplierOverallStatus', formatter: '.extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.getSupplierOverallStatusIcon' }"
+				color="{ path: 'SupplierOverallStatus', formatter: '.extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.getSupplierOverallStatusState' }"
+				press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.onSupplierOverallStatusPress"/>
+		</smartform:elements>
+	</smartform:GroupElement>
+	<!--/ Supplier Overall Status-->
+	<!-- Automation Category -->
+	<smartform:GroupElement id="idAutomationCatGroupElement" visible="{AutomationFlag}">
+		<smartform:elements>
+			<smartfield:SmartField id="idAutomationCategory" value="{AutomationCat}" editable="false"/>
+		</smartform:elements>
+	</smartform:GroupElement>
+	<!-- Base Material based on Process Indicator -->
+	<smartform:GroupElement id="idBaseMaterialGroupElement" visible="{BaseVisFlag}">
+		<smartform:elements>
+			<!--Base material always read-only-->
+			<smartfield:SmartField id="idBaseMaterial" value="{BaseMaterial}" editable="false"/>
+		</smartform:elements>
+	</smartform:GroupElement>
+	<!-- Base Material Description based on Process Indicator -->
+	<smartform:GroupElement id="idBaseMaterialDescGroupElement" visible="{BaseVisFlag}">
+		<smartform:elements>
+			<!-- Base material description editable in edit and create mode-->
+			<smartfield:SmartField id="idBaseMaterialDesc" value="{BaseMaterialDesc}" editable="{ui>/editable}"/>
+		</smartform:elements>
+	</smartform:GroupElement>
+	<!-- Spare Part Relevant indicator -->
+	<smartform:GroupElement id="idSparePartRelevantGroupElement" visible="{SparePrtVisFlag}">
+		<smartform:elements>
+			<smartfield:SmartField id="idSparePartRelevant" value="{SparePartInd}" editable="false"/>
+		</smartform:elements>
+	</smartform:GroupElement>
+</core:FragmentDefinition>

@@ -1,0 +1,75 @@
+{
+	"fileName": "id_1629263426248_3993_moveControls",
+	"fileType": "change",
+	"changeType": "moveControls",
+	"moduleName": "",
+	"reference": "vwks.nlp.s2p.mm.pctrcentral.manage",
+	"packageName": "$TMP",
+	"content": {
+		"movedElements": [{
+			"selector": {
+				"id": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrDistributionTP--com.sap.vocabularies.UI.v1.FieldGroup::OrgData::xvwksxnlp_ebonrelevance::GroupElement",
+				"idIsLocal": false
+			},
+			"sourceIndex": 9,
+			"targetIndex": 8
+		}],
+		"source": {
+			"selector": {
+				"aggregation": "formElements",
+				"type": "sap.ui.comp.smartform.Group",
+				"id": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrDistributionTP--com.sap.vocabularies.UI.v1.FieldGroup::OrgData::FormGroup",
+				"idIsLocal": false
+			}
+		},
+		"target": {
+			"selector": {
+				"aggregation": "formElements",
+				"type": "sap.ui.comp.smartform.Group",
+				"id": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrDistributionTP--com.sap.vocabularies.UI.v1.FieldGroup::OrgData::FormGroup",
+				"idIsLocal": false
+			}
+		}
+	},
+	"selector": {
+		"id": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrDistributionTP--CCTRItmDistrGenInfo::Form",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {},
+	"namespace": "apps/ui.s2p.mm.pur.central.ctr.sts1/appVariants/vwks.nlp.s2p.mm.pctrcentral.manage/changes/",
+	"projectId": "vwks.nlp.s2p.mm.pctrcentral.manage",
+	"creation": "2021-08-18T05:10:37.968Z",
+	"originalLanguage": "EN",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.78.9",
+		"sourceChangeFileName": "",
+		"compositeCommand": ""
+	},
+	"oDataInformation": {},
+	"dependentSelector": {
+		"source": {
+			"id": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrDistributionTP--com.sap.vocabularies.UI.v1.FieldGroup::OrgData::FormGroup",
+			"idIsLocal": false
+		},
+		"target": {
+			"id": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrDistributionTP--com.sap.vocabularies.UI.v1.FieldGroup::OrgData::FormGroup",
+			"idIsLocal": false
+		},
+		"movedElements": [{
+			"id": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrDistributionTP--com.sap.vocabularies.UI.v1.FieldGroup::OrgData::xvwksxnlp_ebonrelevance::GroupElement",
+			"idIsLocal": false
+		}]
+	},
+	"validAppVersions": {
+		"creation": "1.0.0",
+		"from": "1.0.0",
+		"to": "1.0.0"
+	},
+	"jsOnly": false,
+	"variantReference": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrDistributionTP--template::ObjectPage::ObjectPageVariant",
+	"appDescriptorChange": false
+}

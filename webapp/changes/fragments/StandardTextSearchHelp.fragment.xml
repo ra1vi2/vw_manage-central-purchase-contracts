@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns:core='sap.ui.core' xmlns="sap.m" xmlns:f="sap.f" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog title="{i18n>ImportStandardTextLabel}" horizontalScrolling="false" contentWidth="50rem" contentHeight="35rem">
+		<f:DynamicPage>
+			<f:header>
+				<f:DynamicPageHeader>
+					<f:content>
+						<smartfilterbar:SmartFilterBar id="idSmartFilterBar" considerSelectionVariants="true">
+							<smartfilterbar:controlConfiguration>
+								<smartfilterbar:ControlConfiguration key="NoteType" displayBehaviour="idAndDescription" index="0"/>
+								<smartfilterbar:ControlConfiguration key="Language" controlType="dropDownList" index="1"/>
+							</smartfilterbar:controlConfiguration>
+						</smartfilterbar:SmartFilterBar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<smartTable:SmartTable id="idStdTextSmartTable" header="Standard Text" smartFilterId="idImportStandardTextFragment--idSmartFilterBar"
+					tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" showRowCount="true" useExportToExcel="false"
+					ignoredFields="Favorite,NoteType,TextType,ObjectType" requestAtLeastFields="NoteType,TextType,ObjectType"
+					beforeRebindTable="onBeforeRebindTable">
+					<Table id="idStdTextTable" class="sapUiSizeCompact" mode="MultiSelect" growing="true" growingThreshold="20"
+						selectionChange="onStdTextTableSelectionChange">
+						<columns>
+							<Column data:p13nData='{ "columnKey": "Favorite", "leadingProperty": "Favorite", "sortProperty": "Favorite", "columnIndex": 2 }'>
+								<Text text="{i18n>FavoriteColumnLabel}"/>
+							</Column>
+							<Column
+								data:p13nData='{ "columnKey": "NoteTypeDescription", "leadingProperty": "NoteTypeDescription", "sortProperty": "NoteTypeDescription", "columnIndex": 3 }'>
+								<Text text="{i18n>PreviewColumnLabel}"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<core:Icon color="Default" src="{= !!${Favorite} ? 'sap-icon://favorite' : 'sap-icon://add-favorite'}" press="onFavoritePress"
+										data:isFavorite="{= !!${Favorite}}" tooltip="{i18n>FavoriteColumnLabel}"/>
+									<core:Icon src="sap-icon://document-text" press="onPreviewPress" tooltip="{i18n>PreviewColumnLabel}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</smartTable:SmartTable>
+			</f:content>
+		</f:DynamicPage>
+		<buttons>
+			<Button type="Emphasized" enabled="{propertyModel>/bStandardTextAddBtnEnable}" text="{i18n>AddBtnLabel}" tooltip="{i18n>AddBtnLabel}"
+				press="onAddPress"/>
+			<Button text="{i18n>CancelBtnLabel}" tooltip="{i18n>CancelBtnLabel}" press="onCancelPress"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

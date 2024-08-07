@@ -1,0 +1,46 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap" xmlns:smartform="sap.ui.comp.smartform"
+	xmlns:smartfield="sap.ui.comp.smartfield">
+	<uxap:ObjectPageSection id="idProtoInfoSection" title="{i18n>ProtoTypeInformationSection}" titleUppercase="false"
+		visible="{=${UICT_EnablePrototypeInfo} === 1 ? true : false}">
+		<uxap:subSections>
+			<uxap:ObjectPageSubSection id="idProtoInfoSubSection">
+				<smartform:SmartForm id="idPrototypeSmartForm" editable="{ui>/editable}">
+					<smartform:groups>
+						<smartform:Group id="idPrototypeGroup">
+							<smartform:groupElements>
+								<!-- Build level -->
+								<smartform:GroupElement id="idBuildLevelGroupElement">
+									<smartform:elements>
+										<smartfield:SmartField id="idBuildLevel" value="{BuildLevel}" width="50%"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<!-- Part Capability -->
+								<smartform:GroupElement id="idPartCapabilityGroupElement">
+									<smartform:elements>
+										<smartfield:SmartField id="idPartCapability" value="{PartCapability}" width="50%"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<!-- Production Method -->
+								<smartform:GroupElement id="idProductionMethodGroupElement">
+									<smartform:elements>
+										<smartfield:SmartField id="idProductionMethod" value="{ProductionMethod}" width="50%"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<!-- Max Quantity per week -->
+								<smartform:GroupElement id="idMaxQuantityPerWeekGroupElement">
+									<smartform:elements>
+										<smartfield:SmartField id="idMaxQuantityPerWeek" value="{MaxQtyPerWeek}" uomEditable="false" width="50%"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+							</smartform:groupElements>
+						</smartform:Group>
+					</smartform:groups>
+					<smartform:layout>
+						<smartform:ColumnLayout id="idPrototypeColLayout" columnsM="2" columnsL="2" columnsXL="2" labelCellsLarge="12"/>
+					</smartform:layout>
+				</smartform:SmartForm>
+			</uxap:ObjectPageSubSection>
+		</uxap:subSections>
+	</uxap:ObjectPageSection>
+</core:FragmentDefinition>

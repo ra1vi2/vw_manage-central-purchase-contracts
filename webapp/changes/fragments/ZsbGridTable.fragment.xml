@@ -1,0 +1,192 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:layout="sap.ui.layout" xmlns:table="sap.ui.table" xmlns:smartfield="sap.ui.comp.smartfield"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<!-- Grid Table -->
+	<smartTable:SmartTable id="idZsbComponentSmartTableGrid" entitySet="xVWKSxNLP_CCTR_I_ZSB" tableType="Table" tableBindingPath="to_ZSBInfo"
+		header="{i18n>ZSBTableHeader}" showRowCount="true" useTablePersonalisation="true" showFullScreenButton="true"
+		requestAtLeastFields="Price,PriceCurrency,PriceTempFlag,PricePrelogisticCurrency,priceAddedCurrency,PriceHandlingCurrency"
+		beforeRebindTable="onBeforeEditZsbRebindTable"
+		ignoreFromPersonalisation="CentralContract,CentralContractItem,ManualExchangeRate,PriceTempFlag,PricePreLogistic,PriceAddedValue,PriceHandling,PaymentModel,PricepercentagePreLogistic,PricepercentageAddedValue,PricepercentageHandling"
+		visible="{ui>/editable}" enableAutoBinding="true" class="sapUiResponsiveContentPadding" customData:useSmartField="true" editable="true">
+		<smartTable:customToolbar>
+			<OverflowToolbar id="idZsbToolbarGrid" design="Transparent">
+				<ComboBox id="idPlantComboBoxEditTable" change="onPlantChangeEditTable" placeholder="{i18n>Plants}"></ComboBox>
+				<DatePicker id="idValuationDate" placeholder="{i18n>ValuationDate}" enabled="{ui>/editable}"
+					value="{path:'ValDate', type:'sap.ui.model.type.Date', formatOptions: { style: 'medium', strictParsing: true, UTC: true}}" width="10rem"/>
+				<ToolbarSpacer id="idZsbToolbarSpacerGrid"/>
+				<Button id="idPullFromBOMButton" text="{i18n>PullFromBOM}" tooltip="{i18n>PullFromBOM}" type="Transparent" enabled="{ui>/editable}"
+					press="handlePullFromBOM"/>
+				<Button id="idFindContracts" text="{i18n>FindContracts}" tooltip="{i18n>FindContracts}" type="Transparent" enabled="{ui>/editable}"
+					press="handleFindContracts"/>
+				<Button id="idCalculatePriceButton" text="{i18n>CalculatePrice}" tooltip="{i18n>CalculatePrice}" visible="{= ! ${ZSBLaw_Flag} }"
+					type="Transparent" enabled="{ui>/editable}" press="handleCalculatePrice"/>
+				<Button id="idTakeOverZSBConditionsButton" text="{i18n>TakeOverZSBConditions}" type="Transparent" visible="{= ! ${ZSBLaw_Flag} }"
+					tooltip="{i18n>TakeOverZSBConditions}" enabled="{ui>/editable}" press="handleTakeOverZSBConditions"/>
+				<Button id="idTakeOverLAWConditionsButton" text="{i18n>TakeOverLAWConditions}" type="Transparent" visible="{ZSBLaw_Flag}"
+					enabled="{ui>/editable}" tooltip="{i18n>TakeOverLAWConditions}" press="handleTakeOverZSBConditions"/>
+				<Button id="idAddLineManually" icon="sap-icon://add" type="Transparent" tooltip="{i18n>AddLineManually}" enabled="{ui>/editable}"
+					press="handleAddLineManually"/>
+				<Button id="idDeleteLine" icon="sap-icon://delete" type="Transparent" tooltip="{i18n>DeleteLine}"
+					enabled="{propertyModel>/bDeleteLineBtnEnable}" press="handleDeleteLine"/>
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+		<table:Table id="idZSBCompEditTable" selectionMode="MultiToggle" enableColumnFreeze="true" minAutoRowCount="5" visibleRowCountMode="Auto">
+			<table:columns>
+				<table:Column id="idZSBPaymentModelEditTable" width="9rem">
+					<Label id="idZSBPaymentModelLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_ZSBType/PaymentModel/@sap:label}"/>
+					<table:template>
+						<smartfield:SmartField id="idZsbPaymentModelSelect" value="{PaymentModel}" change="handlePaymentModelChange"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idZSBPaymentModelCustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "PaymentModelKey", "leadingProperty": "PaymentModel", "columnIndex": "4" \}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idZSBCompContractItemColumnEditTable" width="11rem">
+					<Label id="idZSBCompContractItemLabelEditTable"
+						text="{/#xVWKSxNLP_CCTR_I_ZSBType/CentralContract/@sap:label} / {/#xVWKSxNLP_CCTR_I_ZSBType/CentralContractItem/@sap:label}"/>
+					<table:template>
+						<Link id="idZsbCompContractItemLinkEditTable" visible="{= !!${CentralContract} &amp;&amp; !!${CentralContractItem} }"
+							text="{CentralContract} / {CentralContractItem}" press="handleContractItemNav"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idZSBContractCustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "CentralContractAndItem", "leadingProperty": "ContractNumberItemUniqueId", "columnIndex": "7" \}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idPriceColumnEditTable" width="11rem" visible="{= ! ${ZSBLaw_Flag} }">
+					<Label id="idPriceColumnLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_ZSBType/Price/@sap:label}"/>
+					<table:template>
+						<smartfield:SmartField id="idPriceEditTable" textAlign="Right" value="{Price}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idPriceCustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "PriceKey", "leadingProperty": "Price", "columnIndex": "110" \}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idZSBCompPriceTempFlagColumnEditTable" width="9rem">
+					<Label id="idZSBCompPriceTempFlagLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_READ_ZSBType/PriceTempFlag/@sap:label}" tooltip="{/#xVWKSxNLP_CCTR_I_READ_ZSBType/PriceTempFlag/@sap:label}"/>
+					<table:template>
+						<Text id="idPriceTempFlagTextEditTable" text="{ path: 'PriceTempFlag', formatter: '.formatBooleanValue' }"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idPriceTempFlagCustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "PriceTempFlagKey", "leadingProperty": "PriceTempFlag", "columnIndex": "130" \}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idManualExchangeRateColumnEditTable" width="9rem">
+					<Label id="idManualExchangeRateLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_ZSBType/ManualExchangeRate/@sap:label}"/>
+					<table:template>
+						<smartfield:SmartField id="idManualExchangeRateEditTable" textAlign="Right" value="{ManualExchangeRate}" change="changeDecimalEmptyHandler"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idManualExchangeRateCustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "ManualExchangeRateKey", "leadingProperty": "ManualExchangeRate", "columnIndex": "140" \}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idPricePreLogisticColumnEditTable" width="11rem">
+					<Label id="idPricePreLogisticColumnLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_ZSBType/PricePreLogistic/@sap:label}"/>
+					<table:template>
+						<smartfield:SmartField id="idPricePreLogisticEditTable" textAlign="Right" value="{PricePreLogistic}" change="onChangePrice"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idPricePrelogisticCustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "PricePreLogisticKey", "leadingProperty": "PricePreLogistic", "columnIndex": "150" \}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idPercPricePreLogisticColumnEditTable" width="9rem" visible="{= ! ${ZSBLaw_Flag} }">
+					<Label id="idPercPricePreLogisticColumnLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_ZSBType/PricepercentagePreLogistic/@sap:label}"/>
+					<table:template>
+						<smartfield:SmartField id="idPercPricePreLogisticEditTable" textAlign="Right" value="{PricepercentagePreLogistic}"
+							enabled="{ path: 'PaymentModel', formatter: '.formatPercentageCostEnableState' }"
+							customData:percentageZSBConfig="{ sourceParameter: 'PercentagePricePreLogistic', sourceProperty: 'PricepercentagePreLogistic', currencyParameter:'PricePreLogisticCurrency', currencyProperty: 'PricePrelogisticCurrency', actionName: 'CalcPrelogistic', targetProperty: 'PricePreLogistic', returnParameter: 'PricePreLogistic' }"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idPercPricePreLogisticCustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "PricepercentagePreLogisticKey", "leadingProperty": "PricepercentagePreLogistic", "columnIndex": "160" \}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idPriceAddedValueColumnEditTable" width="11rem">
+					<Label id="idPriceAddedValueColumnLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_ZSBType/PriceAddedValue/@sap:label}"/>
+					<table:template>
+						<smartfield:SmartField id="idPriceAddedValueEditTable" textAlign="Right" value="{PriceAddedValue}" change="onChangePrice"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idPriceAddedValueCustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "PriceAddedValueKey", "leadingProperty": "PriceAddedValue", "columnIndex": "170" \}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idPercPriceAddedValueColumnEditTable" width="9rem" visible="{= ! ${ZSBLaw_Flag} }">
+					<Label id="idPercPriceAddedValueColumnLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_ZSBType/PricepercentageAddedValue/@sap:label}"/>
+					<table:template>
+						<smartfield:SmartField id="idPercPriceAddedValueEditTable" textAlign="Right" value="{PricepercentageAddedValue}"
+							enabled="{ path: 'PaymentModel', formatter: '.formatPercentageCostEnableState' }"
+							customData:percentageZSBConfig="{ sourceParameter: 'PercentagePriceAdded', sourceProperty: 'PricepercentageAddedValue', currencyParameter:'PriceAddedCurrency', currencyProperty: 'priceAddedCurrency', actionName: 'CalcAddedValue', targetProperty: 'PriceAddedValue', returnParameter: 'PriceAdded' }"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idPercPriceAddedValueustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "PricepercentageAddedValueKey", "leadingProperty": "PricepercentageAddedValue", "columnIndex": "180" \}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idPriceHandlingColumnEditTable" width="11rem">
+					<Label id="idPriceHandlingColumnLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_ZSBType/PriceHandling/@sap:label}"/>
+					<table:template>
+						<smartfield:SmartField id="idPriceHandlingEditTable" textAlign="Right" value="{PriceHandling}" change="onChangePrice"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idPriceHandlingCustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "PriceHandlingKey", "leadingProperty": "PriceHandling", "columnIndex": "190" \}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idPercPriceHandlingColumnEditTable" width="9rem" visible="{= ! ${ZSBLaw_Flag} }">
+					<Label id="idPercPricePriceHandlingColumnLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_ZSBType/PricepercentageHandling/@sap:label}"/>
+					<table:template>
+						<smartfield:SmartField id="idPercPriceHandlingEditTable" textAlign="Right" value="{PricepercentageHandling}"
+							enabled="{ path: 'PaymentModel', formatter: '.formatPercentageCostEnableState' }"
+							customData:percentageZSBConfig="{ sourceParameter: 'PercentagePriceHandling', sourceProperty: 'PricepercentageHandling', currencyParameter:'PriceHandlingCurrency', currencyProperty: 'PriceHandlingCurrency', actionName: 'CalcHandlingCst', targetProperty: 'PriceHandling', returnParameter: 'PriceHandling' }"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idPercPriceHandlingustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "PercentagePriceHandlingKey", "leadingProperty": "PricepercentageHandling", "columnIndex": "200" \}'/>
+					</table:customData>
+				</table:Column>
+                <!-- Reference -->
+                <table:Column id="idLAWReferenceColumnEditTable" width="11rem" visible="{= ${ZSBLaw_Flag}}">
+					<Label id="idLAWReferenceColumnLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_ZSBType/LAWReference/@sap:label}" tooltip="{/#xVWKSxNLP_CCTR_I_ZSBType/LAWReference/@sap:label}"/>
+					<table:template>
+						<smartfield:SmartField id="idLAWReferenceEditTable" textAlign="Right" value="{LAWReference}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idLAWReferenceCustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "LAWReferenceKey", "leadingProperty": "LAWReference", "columnIndex": "210" \}'/>
+					</table:customData>
+				</table:Column>
+                <!-- Pre-Financing -->
+                <table:Column id="idPricePreFinancingColumnEditTable" width="11rem" visible="{= ${ZSBLaw_Flag} }">
+					<Label id="idPricePreFinancingColumnLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_ZSBType/PricePreFinancing/@sap:label}" tooltip="{/#xVWKSxNLP_CCTR_I_ZSBType/PricePreFinancing/@sap:label}"/>
+					<table:template>
+						<smartfield:SmartField id="idPricePreFinancingEditTable" textAlign="Right" value="{PricePreFinancing}" change="onChangePrice"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idPricePreFinancingCustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "PricePreFinancingKey", "leadingProperty": "PricePreFinancing", "columnIndex": "220" \}'/>
+					</table:customData>
+				</table:Column>
+                <!-- % Pre-Financing -->
+                <table:Column id="idPricePercentagePreFinancingColumnEditTable" width="9rem" visible="{= ${ZSBLaw_Flag} }">
+					<Label id="idPricePercentagePreFinancingColumnLabelEditTable" text="{/#xVWKSxNLP_CCTR_I_ZSBType/PricePercentagePreFinancing/@sap:label}" tooltip="{/#xVWKSxNLP_CCTR_I_ZSBType/PricePercentagePreFinancing/@sap:label}"/>
+					<table:template>
+						<smartfield:SmartField id="idPricePercentagePreFinancingEditTable" textAlign="Right" value="{PricePercentagePreFinancing}"
+							enabled="{ path: 'PaymentModel', formatter: '.formatPercentageCostEnableState' }"
+							customData:percentageZSBConfig="{sourceParameter: 'PricePercentagePreFinancing', sourceProperty: 'PricePercentagePreFinancing', currencyParameter:'PricePreFinancing', currencyProperty: 'PricePreFinancing', actionName: 'CalcPreFinancing', targetProperty: 'PricePreFinancing', returnParameter: 'PricePreFinancing' }"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData id="idPricePreFinancingCurrustomDataEditTable" key="p13nData"
+							value='\{"columnKey": "PricePreFinancingCurrKey", "leadingProperty": "PricePreFinancingCurrency", "columnIndex": "230" \}'/>
+					</table:customData>
+				</table:Column>
+			</table:columns>
+		</table:Table>
+	</smartTable:SmartTable>
+</core:FragmentDefinition>

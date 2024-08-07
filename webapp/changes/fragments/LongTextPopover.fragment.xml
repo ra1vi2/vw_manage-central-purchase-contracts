@@ -1,0 +1,4 @@
+<core:FragmentDefinition xmlns:core='sap.ui.core' xmlns="sap.m">
+	<ResponsivePopover contentWidth="25%" class="sapUiPopupWithPadding" placement="HorizontalPreferredRight">
+	</ResponsivePopover>
+</core:FragmentDefinition>

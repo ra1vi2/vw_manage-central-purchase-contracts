@@ -1,0 +1,219 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:core="sap.ui.core" core:require="{Constants: 'vwks/nlp/s2p/mm/pctrcentral/manage/changes/utils/Constants'}">
+    <Dialog contentWidth="90%" title="{i18n>FindContractsDialogtitle}" contentHeight="90%" horizontalScrolling="false" verticalScrolling="true" draggable="true" resizable="true">
+        <IconTabBar id="idFindContractsIconTabBar" select="onFindContractsTabSelection" class="sapUiResponsiveContentPadding" expandable="false" selectedKey="{findContracts>/selectedTabKey}">
+            <items>
+                <IconTabFilter id="idSingleContractsTab" text="{i18n>SingleContracts}" key="01"></IconTabFilter>
+                <IconTabFilter id="idMultipleContractsTab" text="{i18n>MultipleContracts}" key="02"></IconTabFilter>
+                <IconTabFilter id="idUOMMismatchTab" text="{i18n>UOMMismatch}" key="03"></IconTabFilter>
+                <IconTabFilter id="idNoContractTab" text="{i18n>NoContract}" key="04"></IconTabFilter>
+            </items>
+            <content>
+                <MessageStrip id="idInfoMessage" text="{findContracts>/infoLabel}" type="Warning" showIcon="true"></MessageStrip>
+                <smartTable:SmartTable id="idFindContractsSmartTable" tableType="ResponsiveTable" entitySet="xVWKSxNLP_CCTR_I_FIND_CTR_ZSB" ignoreFromPersonalisation="p_draftuuid,p_valuationdate" useTablePersonalisation="true" initialise="onInitialiseFindContractsSmartTable" beforeRebindTable="onFindContractsRebindTable" useExportToExcel="false" useVariantManagement="false" showRowCount="false" requestAtLeastFields="Selected,PricePrelogisticCurrency,priceAddedCurrency,PriceHandlingCurrency,SupplierName,PlantName,MaterialDescription" showFullScreenButton="true">
+                    <Table id="idFindContractsInternalTable" mode="{= ${findContracts>/selectedTabKey} === Constants.TAB_KEYS.MULTIPLE || ${findContracts>/selectedTabKey} === Constants.TAB_KEYS.ROD ? 'MultiSelect' : 'None'}" updateFinished="onFindContractsUpdateFinished" selectionChange="onTableSelectionChange">
+                        <columns>
+                            <Column id="idMaterialCustomColumn">
+                                <Text id="idMaterialCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/Material/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idMaterialCustomData" key="p13nData" value='\{"columnKey": "Material","columnIndex":"0","leadingProperty": "Material"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idPlantCustomColumn">
+                                <Text id="idPlantCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/Plant/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idPlantCustomData" key="p13nData" value='\{"columnKey": "Plant","columnIndex":"1","leadingProperty": "Plant"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idEbelnCustomColumn" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}">
+                                <Text id="idEbelnCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/Ebeln/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idEbelnCustomData" key="p13nData" value='\{"columnKey": "Ebeln","columnIndex":"2","leadingProperty": "Ebeln"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idEbelpCustomColumn" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}">
+                                <Text id="idEbelpCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/Ebelp/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idEbelpCustomData" key="p13nData" value='\{"columnKey": "Ebelp","columnIndex":"3","leadingProperty": "Ebelp"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idValidityStartDateCustomColumn" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}">
+                                <Text id="idValidityStartDateCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/ValidityStartDate/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idValidityStartDateCustomData" key="p13nData" value='\{"columnKey": "ValidityStartDate","columnIndex":"4","leadingProperty": "ValidityStartDate"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idValidityEndDateCustomColumn" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}">
+                                <Text id="idValidityEndDateCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/ValidityEndDate/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idValidityEndDateCustomData" key="p13nData" value='\{"columnKey": "ValidityEndDate","columnIndex":"5","leadingProperty": "ValidityEndDate"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idSupplierCustomColumn" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}">
+                                <Text id="idSupplierCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/Supplier/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idSupplierCustomData" key="p13nData" value='\{"columnKey": "Supplier","columnIndex":"6","leadingProperty": "Supplier"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idsupplier_pickupCustomColumn" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}">
+                                <Text id="idsupplier_pickupCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/supplier_pickup/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idsupplier_pickupCustomData" key="p13nData" value='\{"columnKey": "supplier_pickup","columnIndex":"7","leadingProperty": "supplier_pickup"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idQuotaCustomColumn" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}">
+                                <Text id="idQuotaCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/Quota/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idQuotaCustomData" key="p13nData" value='\{"columnKey": "Quota","columnIndex":"8","leadingProperty": "Quota"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idPriceCustomColumn" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}">
+                                <Text id="idPriceCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/Price/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idPriceCustomData" key="p13nData" value='\{"columnKey": "Price","columnIndex":"9","leadingProperty": "Price", "additionalProperty": "PriceCurrency"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idPricePreLogisticCustomColumn" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}">
+                                <Text id="idPricePreLogisticCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/PricePreLogistic/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idPricePreLogisticaCustomData" key="p13nData" value='\{"columnKey": "PricePreLogistic","columnIndex":"10","leadingProperty": "PricePreLogistic", "additionalProperty": "PricePrelogisticCurrency"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idPriceAddedValueCustomColumn" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}">
+                                <Text id="idPriceAddedValueCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/PriceAddedValue/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idPriceAddedValueaCustomData" key="p13nData" value='\{"columnKey": "PriceAddedValue","columnIndex":"11","leadingProperty": "PriceAddedValue", "additionalProperty": "priceAddedCurrency"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idPriceHandlingCustomColumn" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}">
+                                <Text id="idPriceHandlingCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/PriceHandling/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idPriceHandlingaCustomData" key="p13nData" value='\{"columnKey": "PriceHandling","columnIndex":"12","leadingProperty": "PriceHandling", "additionalProperty": "PriceHandlingCurrency"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idUnitZSBCustomColumn" visible="{= ${findContracts>/selectedTabKey} === Constants.TAB_KEYS.UOM}">
+                                <Text id="idUnitZSBCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/UnitZSB/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idUnitZSBCustomData" key="p13nData" value='\{"columnKey": "UnitZSB","columnIndex":"13","leadingProperty": "UnitZSB"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idUnitCtrCustomColumn" visible="{= ${findContracts>/selectedTabKey} === Constants.TAB_KEYS.UOM}">
+                                <Text id="idUnitCtrCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/UnitCtr/@sap:label}"></Text>
+                                <customData>
+                                    <core:CustomData id="idUnitCtrCustomData" key="p13nData" value='\{"columnKey": "UnitCtr","columnIndex":"14","leadingProperty": "UnitCtr"}'/>
+                                </customData>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="idFindContractsCustomColumnList">
+                                <cells>
+                                    <Text id="idMaterialCustomColumnValue" text="{MaterialDescription} ({Material})"/>
+                                    <Text id="idPlantCustomColumnValue" text="{PlantName} ({Plant})"/>
+                                    <Text id="idEbelnCustomColumnValue" text="{Ebeln}" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}"/>
+                                    <Text id="idEbelpCustomColumnValue" text="{Ebelp}" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}"/>
+                                    <Text id="idValidityStartDateCustomColumnValue" text="{ 'path': 'ValidityStartDate', 'type': 'sap.ui.model.type.Date', 'formatOptions': {style: 'medium'}}" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}"/>
+                                    <Text id="idValidityEndDateCustomColumnValue" text="{ 'path': 'ValidityEndDate', 'type': 'sap.ui.model.type.Date', 'formatOptions': {style: 'medium'}}" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}"/>
+                                    <Text id="idSupplierCustomColumnValue" text="{SupplierName} ({Supplier})" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}"/>
+                                    <Text id="idsupplier_pickupCustomColumnValue" text="{supplier_pickup}" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}"/>
+                                    <Text id="idQuotaCustomColumnValue" text="{Quota}" visible="{= ${findContracts>/selectedTabKey} !== Constants.TAB_KEYS.ROD}"/>
+                                    <ObjectNumber number="{ path: 'Price', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 } }" unit="{PriceCurrency}"/>
+                                    <ObjectNumber number="{ path: 'PricePreLogistic', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 } }" unit="{PricePrelogisticCurrency}"/>
+                                    <ObjectNumber number="{ path: 'PriceAddedValue', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 } }" unit="{priceAddedCurrency}"/>
+                                    <ObjectNumber number="{ path: 'PriceHandling', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 } }" unit="{PriceHandlingCurrency}"/>
+                                    <Text id="idUnitZSBCustomColumnValue" text="{UnitZSB}" visible="{= ${findContracts>/selectedTabKey} === Constants.TAB_KEYS.UOM}"/>
+                                    <Text id="idUnitCtrCustomColumnValue" text="{UnitCtr}" visible="{= ${findContracts>/selectedTabKey} === Constants.TAB_KEYS.UOM}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </smartTable:SmartTable>
+                <MessageStrip id="idTaufungInfoMessage" text="{i18n>NoContractTaufungInfoLabel}" visible="{= ${findContracts>/selectedTabKey} === Constants.TAB_KEYS.ROD}" type="Warning" showIcon="true"/>
+                <smartTable:SmartTable id="idFindContractsTaufungSmartTable" visible="{= ${findContracts>/selectedTabKey} === Constants.TAB_KEYS.ROD}" tableType="ResponsiveTable" entitySet="xVWKSxNLP_CCTR_I_FIND_CTR_ZSB" useTablePersonalisation="true" initialise="onInitialiseFindContractsSmartTable" beforeRebindTable="onFindContractsTaufungRebindTable" useExportToExcel="false" useVariantManagement="false" showRowCount="false" requestAtLeastFields="PlantName,MaterialDescription" showFullScreenButton="true">
+                    <Table id="idFindContractsTaufungInternalTable">
+                        <columns>
+                            <Column id="idTaufungMaterialCustomColumn">
+                                <Text id="idTaufungMaterialCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/Material/@sap:label}"/>
+                                <customData>
+                                    <core:CustomData id="idTaufungMaterialCustomData" key="p13nData" value='\{"columnKey": "Material","columnIndex":"0","leadingProperty": "Material"}'/>
+                                </customData>
+                            </Column>
+                            <Column id="idTaufungPlantCustomColumn">
+                                <Text id="idTaufungPlantCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/Plant/@sap:label}"/>
+                                <customData>
+                                    <core:CustomData id="idTaufungPlantCustomData" key="p13nData" value='\{"columnKey": "Plant","columnIndex":"1","leadingProperty": "Plant"}'/>
+                                </customData>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="idFindContractsTaufungCustomColumnList">
+                                <cells>
+                                    <Text id="idTaufungMaterialCustomColumnValue" text="{MaterialDescription} ({Material})"/>
+                                    <Text id="idTaufungPlantCustomColumnValue" text="{PlantName} ({Plant})"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </smartTable:SmartTable>
+                <MessageStrip id="idRoDInfoMessage" text="{i18n>NoContractRodInfoLabel}" visible="{= ${findContracts>/selectedTabKey} === Constants.TAB_KEYS.ROD}" type="Warning" showIcon="true"/>
+                <!-- Find contracts RoD table -->
+                <smartTable:SmartTable id="idFindContractsRoDSmartTable" visible="{= ${findContracts>/selectedTabKey} === Constants.TAB_KEYS.ROD}" tableType="ResponsiveTable" entitySet="xVWKSxNLP_CCTR_I_FIND_CTR_ZSB" useTablePersonalisation="true" beforeRebindTable="onFindContractsRodRebindTable" requestAtLeastFields="PlantName,MaterialDescription,RodDocumentNum,RodStatusDesc,RodRespBuyer" useExportToExcel="false" useVariantManagement="false" showRowCount="false" showFullScreenButton="true">
+                    <Table id="idFindContractsRoDInternalTable">
+                        <columns>
+                            <!-- Material -->
+                            <Column id="idRodMaterialCustomColumn">
+                                <Text id="idRodMaterialCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/Material/@sap:label}"/>
+                                <customData>
+                                    <core:CustomData id="idRodMaterialCustomData" key="p13nData" value='\{"columnKey": "Material","columnIndex":"0","leadingProperty": "Material"}'/>
+                                </customData>
+                            </Column>
+                            <!-- RoD Document Number -->
+                            <Column id="idRodDocNumCustomColumn">
+                                <Text id="idRodDocNumCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/RodDocumentNum/@sap:label}"/>
+                                <customData>
+                                    <core:CustomData id="idRodDocNumCustomData" key="p13nData" value='\{"columnKey": "RodDocumentNum","columnIndex":"1","leadingProperty": "RodDocumentNum"}'/>
+                                </customData>
+                            </Column>
+                            <!-- Plant -->
+                            <Column id="idRodPlantCustomColumn">
+                                <Text id="idRodPlantCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/Plant/@sap:label}"/>
+                                <customData>
+                                    <core:CustomData id="idRodPlantCustomData" key="p13nData" value='\{"columnKey": "Plant","columnIndex":"2","leadingProperty": "Plant"}'/>
+                                </customData>
+                            </Column>
+                            <!-- RoD Status -->
+                            <Column id="idRodStatusCustomColumn">
+                                <Text id="idRodStatusCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/RodStatusDesc/@sap:label}"/>
+                                <customData>
+                                    <core:CustomData id="idRodStatusCustomData" key="p13nData" value='\{"columnKey": "RodStatusDesc","columnIndex":"3","leadingProperty": "RodStatusDesc"}'/>
+                                </customData>
+                            </Column>
+                            <!-- RoD Responsible Buyer -->
+                            <Column id="idRodRespBuyerCustomColumn">
+                                <Text id="idRodRespBuyerCustomColumnLabel" text="{/#xVWKSxNLP_CCTR_I_FIND_CTR_ZSBType/RodRespBuyer/@sap:label}"/>
+                                <customData>
+                                    <core:CustomData id="idRodRespBuyerCustomData" key="p13nData" value='\{"columnKey": "RodRespBuyer","columnIndex":"4","leadingProperty": "RodRespBuyer"}'/>
+                                </customData>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="idFindContractsRodCustomColumnList">
+                                <cells>
+                                    <Text id="idRodMaterialCustomColumnValue" text="{MaterialDescription} ({Material})"/>
+                                    <Text id="idRodDocNumCustomColumnValue" text="{RodDocumentNum}"/>
+                                    <Text id="idRodPlantCustomColumnValue" text="{PlantName} ({Plant})"/>
+                                    <Text id="idRodStatusCustomColumnValue" text="{RodStatusDesc}"/>
+                                    <Text id="idRodRespBuyerCustomColumnValue" text="{RodRespBuyer}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </smartTable:SmartTable>
+            </content>
+        </IconTabBar>
+        <buttons>
+            <Button id="idFindContractsDialogConfirm" type="Emphasized" text="{i18n>ConfirmButtonText}" press="onFindContractsDialogConfirm"/>
+            <Button id="idFindContractsDialogCancel" text="{i18n>CancelButtonText}" press="onFindContractsDialogCancel"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

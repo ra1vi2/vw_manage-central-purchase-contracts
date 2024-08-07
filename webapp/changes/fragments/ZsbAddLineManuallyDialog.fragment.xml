@@ -1,0 +1,121 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:smartform="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield">
+	<Dialog id="idAddLineManuallyDialog" title="{i18n>AddLineManually}">
+		<content>
+			<VBox id="idSmartFormVBox">
+				<smartform:SmartForm id="idZsbAddManualForm" entityType="xVWKSxNLP_CCTR_I_ZSBType" editable="true">
+					<smartform:groups>
+						<smartform:Group id="idCentralContractGroup">
+							<smartform:groupElements>
+								<smartform:GroupElement id="idMaterialGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idMaterial" value="{Material}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idMaterialDescriptionGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idMaterialDescription" value="{MaterialDescription}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idResponsibleBuyerGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idResponsibleBuyer" value="{ResponsibleBuyer}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idTaufungGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idTaufung" value="{Taufung}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idAmountPerZsBGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idAmountPerZsb" value="{AmountPerZSB}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idPlant">
+									<smartform:elements>
+										<smartField:SmartField id="idPlantValue" value="{Plant}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idCentralContractElement">
+									<smartform:elements>
+										<smartField:SmartField id="idCentralContract" value="{CentralContract}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idCentralContractItemGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idCentralContractItem" value="{CentralContractItem}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idSupplierGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idSupplier" value="{Supplier}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idSupplierPickupGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idSupplierPickup" value="{SupplierPickup}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idQuotaGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idQuota" value="{Quota}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idPriceGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idPrice" value="{Price}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idPricePreLogisticGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idPricePreLogistic" value="{PricePreLogistic}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idPricepercentagePreLogisticGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idPricepercentagePreLogistic" value="{PricepercentagePreLogistic}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idPriceAddedValueGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idPriceAddedValue" value="{PriceAddedValue}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idPricepercentageAddedValueGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idPricepercentageAddedValue" value="{PricepercentageAddedValue}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idPriceHandlingGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idPriceHandling" value="{PriceHandling}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idPricepercentageHandlingGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idPricepercentageHandling" value="{PricepercentageHandling}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+								<smartform:GroupElement id="idManualExchangeRateGroupElement">
+									<smartform:elements>
+										<smartField:SmartField id="idManualExchangeRate" value="{ManualExchangeRate}"/>
+									</smartform:elements>
+								</smartform:GroupElement>
+							</smartform:groupElements>
+						</smartform:Group>
+					</smartform:groups>
+					<smartform:layout>
+						<smartform:ColumnLayout id="idZsbManualColLayout" columnsM="2" columnsL="3" columnsXL="4" labelCellsLarge="12"/>
+					</smartform:layout>
+				</smartform:SmartForm>
+			</VBox>
+		</content>
+		<beginButton>
+			<Button id="idConfirmButton" text="{i18n>OkZSB}" type="Emphasized" tooltip="{i18n>CopyButtonText}" press="handleAddLineManuallyConfirmPress"/>
+		</beginButton>
+		<endButton>
+			<Button id="idCancelButton" text="{i18n>CancelButtonText}" tooltip="{i18n>CancelButtonText}" press="handleAddLineManuallyDialogClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

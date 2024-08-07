@@ -1,0 +1,17 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:table="sap.ui.table"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:layout="sap.ui.layout">
+	<uxap:ObjectPageSection id="idItemDemandManagementSection"
+		title="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>DemandManagementSection}" titleUppercase="false">
+		<uxap:ObjectPageSubSection id="idItemDemandManagementSubsection">
+			<layout:VerticalLayout id="idItemDemandManagementLayout" class="sapUiContentPadding" width="100%">
+				<smartTable:SmartTable id="idItemDemandManagementTable" demandPopin="true" entitySet="xVWKSxNLP_CCTR_I_READ_ITMDH"
+					useTablePersonalisation="true" tableBindingPath="to_ItemDemandData" showRowCount="true" enableAutoColumnWidth="true"
+					enableAutoBinding="true" class="sapUiResponsiveContentPadding">
+					<table:Table id="griditemDemand" selectionMode="None" enableColumnFreeze="true" minAutoRowCount="5" visibleRowCountMode="Auto"
+						fixedColumnCount="5" ariaLabelledBy="title" fixedBottomRowCount="1"></table:Table>
+				</smartTable:SmartTable>
+			</layout:VerticalLayout>
+		</uxap:ObjectPageSubSection>
+	</uxap:ObjectPageSection>
+</core:FragmentDefinition>

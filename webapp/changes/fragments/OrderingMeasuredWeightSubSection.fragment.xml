@@ -1,0 +1,33 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core='sap.ui.core' xmlns:uxap="sap.uxap"
+	xmlns:form="sap.ui.comp.smartform" 	xmlns:smartField="sap.ui.comp.smartfield">
+	<uxap:ObjectPageSubSection id="idMeasuredMaterials" title="{i18n>OrderingMeasuredWeightLabel}">
+		<form:SmartForm id="idMeasuredMaterialsForm" editable="false" binding="{to_OMWData}">
+			<form:layout>
+				<form:ColumnLayout id="idColumnLayout" columnsM="2" columnsL="3" columnsXL="4"/>
+			</form:layout>
+			<form:Group id="idMeasuredMaterialWeightContainer">
+				<form:GroupElement id="idMeasuredMaterialWeightGroup">
+					<smartField:SmartField 
+						id="idMeasuredMaterialWeight"
+						value="{Sweight} {Uom}" 
+						url="{Httplink}"/>
+				</form:GroupElement>
+			</form:Group>
+			<form:Group id="idSamplingDateContainer">
+				<form:GroupElement id="idSamplingDateGroup">
+					<smartField:SmartField 
+						id="idSamplingDateText" 
+						value="{Sdate}" />
+				</form:GroupElement>
+			</form:Group>
+			<form:Group id="idSampslingScoreContainer">
+				<form:GroupElement id="idSampslingScoreGroup">
+					<smartField:SmartField 
+						id="idSamplingScore" 
+						value="{Snote}"/>
+				</form:GroupElement>
+			</form:Group>
+		</form:SmartForm>
+	</uxap:ObjectPageSubSection>
+</core:FragmentDefinition>

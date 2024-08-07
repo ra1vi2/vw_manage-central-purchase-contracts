@@ -1,0 +1,46 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:smartfield="sap.ui.comp.smartfield" xmlns:smartform="sap.ui.comp.smartform"
+	xmlns="sap.m">
+	<smartform:GroupElement id="idHierarchyOverallQuotaPercentageGroupElement">
+		<smartform:elements>
+			<VBox id="idHierarchyOverallQuotaPercentageVBox" visible="{= ${ValueQuota_FC} === 0 ? false : true}">
+				<HBox id="idHierarchyOverallQuotaPercentageHBoxLabel">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>OverallQuotaPercentageLabel}"
+						id="idHierarchyOverAllQuotaPercentageLabel"/>
+				</HBox>
+				<HBox id="idHierarchyOverallQuotaPercentageHBoxTextIcon">
+					<smartfield:SmartField id="idHierarchyOverallQuotaPercentageSmartfield" value="{Quota}" editable="false"/>
+					<core:Icon id="idHierarchyOverallQuotaPercentageInfoIconDisplay" src="sap-icon://message-information" color="#346187"
+						press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handleOverallQuotaInfoIconPress"
+						tooltip="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>OverallQuotaIconText}"
+						visible="{= ${ui>/editable} === false}" class="sapUiSmallMarginBegin"/>
+					<core:Icon id="idHierarchyOverallQuotaInfoPercentageIconEdit" src="sap-icon://message-information" color="#346187"
+						press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handleOverallQuotaInfoIconPress"
+						tooltip="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>OverallQuotaIconText}"
+						visible="{= ${ui>/editable} === true}" class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+				</HBox>
+			</VBox>
+		</smartform:elements>
+	</smartform:GroupElement>
+	<smartform:GroupElement id="idHierarchyOverallQuotaGroupElement">
+		<smartform:elements>
+			<VBox id="idHierarchyOverallQuotaVBox" visible="{= ${Quota_FC} === 0 ? false : true}">
+				<HBox id="idHierarchyOverallQuotaHBoxLabel">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>OverallQuotaLabel}"
+						id="idHierarchyoverAllQuotaLabel"/>
+				</HBox>
+				<HBox id="idHierarchyOverallQuotaHBoxTextIcon">
+					<Text text="{OverAllQuota}" id="idHierarchyOverallQuotaText"/>
+					<core:Icon id="idHierarchyOverallQuotaInfoIconDisplay" src="sap-icon://message-information" color="#346187"
+						press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handleOverallQuotaInfoIconPress"
+						tooltip="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>OverallQuotaIconText}"
+						visible="{= ${ui>/editable} === false}" class="sapUiSmallMarginBegin"/>
+					<core:Icon id="idHierarchyOverallQuotaInfoIconEdit" src="sap-icon://message-information" color="#346187"
+						press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handleOverallQuotaInfoIconPress"
+						tooltip="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>OverallQuotaIconText}"
+						visible="{= ${ui>/editable} === true}" class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+				</HBox>
+			</VBox>
+		</smartform:elements>
+	</smartform:GroupElement>
+</core:FragmentDefinition>

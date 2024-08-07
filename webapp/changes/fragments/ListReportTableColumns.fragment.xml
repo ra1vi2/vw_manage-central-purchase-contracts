@@ -1,0 +1,26 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Column id="idDocHistoryCol">
+		<Text id="idDocumentHistoryColText" text="{i18n>DocumentHistoryLabel}" tooltip="{i18n>DocumentHistoryTooltip}"/>
+		<customData>
+			<core:CustomData id="idDocHistCustomData" key="p13nData"
+				value='\{"columnKey": "DocumentStatusName", "leadingProperty": "DocumentStatusName","columnIndex" : "3"}'/>
+		</customData>
+	</Column>
+	<!--Supplier Overall Status-->
+	<Column id="idCtrOverallStatusColumn">
+		<Text id="idCtrOverallStatusColumnText" text="{i18n>SupplierOverallStatusLabel}"/>
+		<customData>
+			<core:CustomData id="idCtrOverallStatusCustomData" key="p13nData"
+				value='\{ "columnKey": "SupplierOverallStatus", "leadingProperty":"SupplierOverallStatus", "columnIndex" : "2", "sortProperty" : "SupplierOverallStatus", "filterProperty" : "SupplierOverallStatus" }'/>
+		</customData>
+	</Column>
+	<!--Pricing Conditions-->
+	<Column id="idPricingConditionsIconColumn">
+		<Text id="idPricingConditionsIconColumnText"
+			text="{i18n|sap.suite.ui.generic.template.ListReport|C_CentralPurchaseContractTP>PricingConditionsText}"/>
+		<customData>
+			<core:CustomData key="p13nData" value='\{"columnKey" : "pricingConditionsIconColumn", "columnIndex" : "13"}' id="idCustomData"/>
+		</customData>
+	</Column>
+</core:FragmentDefinition>

@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ResponsivePopover id="idStandardTextPreviewPopover" showHeader="false" placement="Auto" afterClose="handleCommentPopoverClose">
+		<content>
+			<Text text="{ path: 'previewModel>/Content', formatter: '.setPreviewText' }" class="sapUiTinyMargin"/>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

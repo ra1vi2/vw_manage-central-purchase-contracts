@@ -1,0 +1,122 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:layout="sap.ui.layout">
+	<Dialog id="idAternativePartsDialog" contentWidth="90%" contentHeight="70%"
+		title="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>AlternativePartsDialogTitle}" class="sapUiSizeCompact">
+		<layout:VerticalLayout id="idAlternativePartsLayout" class="sapUiContentPadding" width="100%">
+			<HBox id="idContractMaterialHbox" width="100%" class="sapUiSmallMarginBegin">
+				<HBox id="idAlternativePartsHbox" class="sapUiSmallMarginEnd">
+					<ObjectStatus id="idContractMaterialLabel"
+						title="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>ContractMaterialAlternativePartsLabel}"
+						text="{alternativePartsModel>/HeaderMaterialDesc}"/>
+				</HBox>
+				<HBox id="idAlternativePartTimeStamp" justifyContent="SpaceBetween">
+					<ObjectStatus id="idHeaderTimeStampLabel"
+						title="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>AlternativePartsTimeStamp}"
+						text="{ path:'alternativePartsModel>/AlternativePartsCheck', type:'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd.MM.yyyy' } }"/>
+				</HBox>
+			</HBox>
+			<smartTable:SmartTable id="idAternativePartsSmartTable" entitySet="alternativePartsModel>/"
+				tableBindingPath="alternativePartsModel>/results" tableType="ResponsiveTable" useExportToExcel="false" useVariantManagement="true"
+				persistencyKey="vwks.nlp.s2p.mm.pctrcentral.manage.AlternativeParts" useTablePersonalisation="true"
+				header="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>SmartTableHeaderText}" showRowCount="true"
+				enableAutoBinding="true" demandPopin="true">
+				<Table id="idAternativePartsTable" growing="true" growingScrollToLoad="true" growingThreshold="100"
+					sticky="ColumnHeaders,HeaderToolbar,InfoToolbar">
+					<columns>
+						<Column id="idMaterial">
+							<customData>
+								<core:CustomData key="p13nData"
+									value='\{"columnKey": "Material","columnIndex":"0","leadingProperty": "Material","filterProperty" :"Material"}'/>
+							</customData>
+							<Text id="idMaterialText" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>Material}"/>
+						</Column>
+						<Column id="idMaterialDescription">
+							<customData>
+								<core:CustomData key="p13nData"
+									value='\{"columnKey": "MaterialDesc","columnIndex":"1","leadingProperty": "MaterialDesc","filterProperty" :"MaterialDesc"}'/>
+							</customData>
+							<Text id="idMaterialDescriptionText" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>MaterialDesc}"/>
+						</Column>
+						<Column id="idPlant">
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Plant","columnIndex":"2","leadingProperty": "Plant","filterProperty" :"Plant"}'/>
+							</customData>
+							<Text text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>Plant}"/>
+						</Column>
+						<Column id="idSupplier" width="13rem">
+							<customData>
+								<core:CustomData key="p13nData"
+									value='\{"columnKey": "Supplier","columnIndex":"3","leadingProperty": "Supplier,SupplierName", "filterProperty" :"Supplier"}'/>
+							</customData>
+							<Text text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>Supplier}"/>
+						</Column>
+						<Column id="idCentralPurchaseContract">
+							<customData>
+								<core:CustomData key="p13nData"
+									value='\{"columnKey": "CentralPurchaseContract","columnIndex":"4","leadingProperty": "CentralPurchaseContract","filterProperty" :"CentralPurchaseContract"}'/>
+							</customData>
+							<Text text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>CentralPurchaseContract}"/>
+						</Column>
+						<Column id="idDocumentType">
+							<customData>
+								<core:CustomData key="p13nData"
+									value='\{"columnKey": "DocumentType","columnIndex":"5","leadingProperty": "DocumentType","filterProperty" :"DocumentType"}'/>
+							</customData>
+							<Text text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>DocumentType}"/>
+						</Column>
+						<Column id="idStatus">
+							<customData>
+								<core:CustomData key="p13nData"
+									value='\{"columnKey": "OutdatedFlag,InactiveFlag","columnIndex":"6","leadingProperty": "OutdatedFlag,InactiveFlag","filterProperty" :"Status"}'/>
+							</customData>
+							<Text id="idStatusText" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>Status}"/>
+						</Column>
+						<Column id="idLeadBuyer">
+							<customData>
+								<core:CustomData key="p13nData"
+									value='\{"columnKey": "LeadBuyer","columnIndex":"7","leadingProperty": "LeadBuyer","filterProperty" :"LeadBuyer"}'/>
+							</customData>
+							<Text text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>LeadBuyer}"/>
+						</Column>
+						<Column id="idValidFrom">
+							<customData>
+								<core:CustomData key="p13nData"
+									value='\{"columnKey": "ValidFrom","columnIndex":"8","leadingProperty": "ValidFrom","filterProperty" :"ValidFrom", "type": "date"}'/>
+							</customData>
+							<Text text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>ValidFrom}"/>
+						</Column>
+						<Column id="idValidTo">
+							<customData>
+								<core:CustomData key="p13nData"
+									value='\{"columnKey": "ValidTo","columnIndex":"9","leadingProperty": "ValidTo","filterProperty" :"ValidTo", "type": "date"}'/>
+							</customData>
+							<Text text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>ValidTo}"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem class="alternativePartsTableLine" unread="true">
+							<cells>
+								<Text text="{alternativePartsModel>Material}"/>
+								<Text text="{alternativePartsModel>MaterialDesc}"/>
+								<Text text="{alternativePartsModel>Plant}"/>
+								<Link text="{ path: 'alternativePartsModel>', formatter: '.setSupplierText' }" press="onSupplierPress"
+									tooltip="{ path: 'alternativePartsModel>', formatter: '.setSupplierText' }"/>
+								<Link text="{alternativePartsModel>CentralPurchaseContract}" press="onCentralPurchaseContractPress"/>
+								<Text text="{alternativePartsModel>DocumentType}"/>
+								<ObjectStatus class="sapUiSmallMarginBottom" text="{ path: 'alternativePartsModel>', formatter: '.getTableLineStatusText' }"
+									tooltip="{ path: 'alternativePartsModel>', formatter: '.getTableLineStatusTooltip' }" inverted="true"
+									state="{ path: 'alternativePartsModel>', formatter: '.getTableLineStatusColor' }"/>
+								<Text text="{alternativePartsModel>LeadBuyer}"/>
+								<Text text="{ path:'alternativePartsModel>ValidFrom', type:'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd.MM.yyyy' } }"/>
+								<Text text="{ path:'alternativePartsModel>ValidTo', type:'sap.ui.model.type.DateTime', formatOptions:{ pattern:'dd.MM.yyyy' } }"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</smartTable:SmartTable>
+		</layout:VerticalLayout>
+		<beginButton>
+			<Button text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>CloseText}" press="onDialogClose"
+				id="idButtonClose"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

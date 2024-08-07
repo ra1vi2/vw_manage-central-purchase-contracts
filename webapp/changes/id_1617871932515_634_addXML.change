@@ -1,0 +1,37 @@
+{
+	"fileName": "id_1617871932515_634_addXML",
+	"fileType": "change",
+	"changeType": "addXML",
+	"moduleName": "vwks/nlp/s2p/mm/pctrcentral/manage/changes/fragments/HierarchyContractHdrActions.fragment.xml",
+	"reference": "vwks.nlp.s2p.mm.pctrcentral.manage",
+	"packageName": "$TMP",
+	"content": {
+		"targetAggregation": "actions",
+		"index": 4,
+		"fragmentPath": "fragments/HierarchyContractHdrActions.fragment.xml"
+	},
+	"selector": {
+		"id": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrHierHdrTP--template::ObjectPage::ObjectPageHeader",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {},
+	"namespace": "apps/ui.s2p.mm.pur.central.ctr.sts1/appVariants/vwks.nlp.s2p.mm.pctrcentral.manage/changes/",
+	"projectId": "vwks.nlp.s2p.mm.pctrcentral.manage",
+	"creation": "2021-04-08T08:55:11.447Z",
+	"originalLanguage": "EN",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.84.3",
+		"sourceChangeFileName": "",
+		"compositeCommand": "",
+		"command": "addXML"
+	},
+	"oDataInformation": {},
+	"dependentSelector": {},
+	"jsOnly": false,
+	"variantReference": "",
+	"appDescriptorChange": false
+}

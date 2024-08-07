@@ -1,0 +1,39 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:layout="sap.ui.layout">
+	<uxap:ObjectPageSection id="idHierarchyZsbReferencesSection" title="{RefZSBFacetDesc}" titleUppercase="false"
+		visible="{showRefZSBFacet}">
+		<uxap:ObjectPageSubSection id="idHierarchyZsbReferencesSubSection">
+			<layout:VerticalLayout id="idHierarchyZsbReferencesLayout" class="sapUiContentPadding" width="100%">
+				<smartTable:SmartTable id="idZsbReferencesSmartTable" entitySet="xVWKSxNLO_CCTR_I_REF_ZSB" tableType="ResponsiveTable"
+					useTablePersonalisation="true" tableBindingPath="to_RefZSBArea" showRowCount="true" enableAutoBinding="true" useExportToExcel="true"
+					requestAtLeastFields="CentralContract,CentralContractItem" class="sapUiResponsiveContentPadding"
+					beforeRebindTable=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.onBeforeZsbRefRebindTable">
+					<OverflowToolbar id="idZsbRefToolbar">
+						<ComboBox id="idRefPlantComboBox" change=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.onRefPlantChange"
+							placeholder="{i18n>Plants}"/>
+					</OverflowToolbar>
+					<Table id="idHierZsbRefInnerTable">
+						<columns>
+							<Column id="idHierZsbRefContractItemColumn" width="10rem">
+								<Label id="idHierZsbRefContractItemColumnLabel"
+									text="{/#xVWKSxNLO_CCTR_I_REF_ZSBType/CentralContract/@sap:label} / {/#xVWKSxNLO_CCTR_I_REF_ZSBType/CentralContractItem/@sap:label}"
+									tooltip="{/#xVWKSxNLO_CCTR_I_REF_ZSBType/CentralContract/@sap:label} / {/#xVWKSxNLO_CCTR_I_REF_ZSBType/CentralContractItem/@sap:label}"></Label>
+								<customData>
+									<core:CustomData id="idHierZSBRefContractCustomData" key="p13nData"
+										value='\{"columnKey": "CentralContractItem", "leadingProperty": "ContractNumberItemUniqueId", "columnIndex": "6" \}'/>
+								</customData>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem id="idHierZsbInnerTableListItem">
+								<Link id="idHierZsbRefContractItemText" text="{CentralContract} / {CentralContractItem}"
+									press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handleContractItemNav"></Link>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</smartTable:SmartTable>
+			</layout:VerticalLayout>
+		</uxap:ObjectPageSubSection>
+	</uxap:ObjectPageSection>
+</core:FragmentDefinition>

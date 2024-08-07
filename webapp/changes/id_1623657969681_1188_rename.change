@@ -1,0 +1,44 @@
+{
+	"fileName": "id_1623657969681_1188_rename",
+	"fileType": "change",
+	"changeType": "rename",
+	"moduleName": "",
+	"reference": "vwks.nlp.s2p.mm.pctrcentral.manage",
+	"packageName": "$TMP",
+	"content": {
+		"originalControlType": "sap.uxap.ObjectPageSubSection"
+	},
+	"selector": {
+		"id": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrHierItemTP--to_CntrlPurContrItmCmmdtyQtyTP::com.sap.vocabularies.UI.v1.LineItem::SubSection",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {
+		"newText": {
+			"value": "{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurchaseContractItemTP>RawMaterialSurcharge}",
+			"type": "XGRP"
+		}
+	},
+	"namespace": "apps/ui.s2p.mm.pur.central.ctr.sts1/appVariants/vwks.nlp.s2p.mm.pctrcentral.manage/changes/",
+	"projectId": "vwks.nlp.s2p.mm.pctrcentral.manage",
+	"creation": "2021-06-14T08:09:36.191Z",
+	"originalLanguage": "EN",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.78.9",
+		"sourceChangeFileName": "",
+		"compositeCommand": ""
+	},
+	"oDataInformation": {},
+	"dependentSelector": {},
+	"validAppVersions": {
+		"creation": "1.0.0",
+		"from": "1.0.0",
+		"to": "1.0.0"
+	},
+	"jsOnly": false,
+	"variantReference": "ui.s2p.mm.pur.central.ctr.sts1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CntrlPurContrHierItemTP--template::ObjectPage::ObjectPageVariant",
+	"appDescriptorChange": false
+}

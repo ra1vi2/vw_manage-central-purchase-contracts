@@ -1,0 +1,26 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<!--Document History Column-->
+	<core:Icon id="idHierarchialDocHistoryIcon" src="sap-icon://customer-history" tooltip="{i18n>DocumentHistoryTooltip}" size="1.25rem"
+		alt="{i18n>DocumentHistoryTooltip}" color="#346187"
+		press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ListReportExtController.openDocumentHistoryDialog"></core:Icon>
+	<!--Supplier Overall Status-->
+	<HBox id="idHierContainerSupplierOverallStatus">
+		<core:Icon id="idCtrHierSupplierOverallStatus" 
+			visible="{= !!${SupplierOverallStatus} }"
+			tooltip="{ path: 'SupplierOverallStatus', formatter: '.extension.vwks.nlp.s2p.mm.pctrcentral.manage.ListReportExtController.getSupplierOverallStatusTooltip' }"
+			src="{ path: 'SupplierOverallStatus', formatter: '.extension.vwks.nlp.s2p.mm.pctrcentral.manage.ListReportExtController.getSupplierOverallStatusIcon' }"
+			color="{ path: 'SupplierOverallStatus', formatter: '.extension.vwks.nlp.s2p.mm.pctrcentral.manage.ListReportExtController.getSupplierOverallStatusState' }"
+			press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ListReportExtController.onSupplierOverallStatusPress"/>
+		<Text 
+			id="idHierNATextSupplierOverallStatus" 
+			visible="{= !${SupplierOverallStatus} }"
+			tooltip="{i18n>SSTLStatusNADesc}"
+			text="{i18n>SSTLStatusNA}"/>
+	</HBox>
+	<!--Pricing Conditions-->
+	<core:Icon id="idHierarchyPricingConditionsIcon" src="sap-icon://loan" size="135%"
+		color="Default"
+		tooltip="{i18n|sap.suite.ui.generic.template.ListReport|C_CentralPurchaseContractTP>PricingConditionsText}"
+		press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ListReportExtController.handlePricingConditionsHierarchyIconPress"/>
+</core:FragmentDefinition>

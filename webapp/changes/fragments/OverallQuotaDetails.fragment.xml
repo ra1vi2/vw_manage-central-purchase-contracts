@@ -1,0 +1,168 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:smartTable="sap.ui.comp.smarttable"
+	core:require="{formatMessage: 'sap/base/strings/formatMessage'}" xmlns:table="sap.ui.table">
+	<Dialog contentWidth="90%" contentHeight="60%"
+		title="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>OverallQuotaDetailsDialogTitle}"
+		class="sapUiSizeCompact" id="idOverallQuotaDetailsDialog">
+		<smartTable:SmartTable id="idOverallQuotaDetailAnalyticalSmartTable" entitySet="xVWKSxNLO_CCTR_I_ITM_QUOTAPOP" useExportToExcel="false"
+			useVariantManagement="false" useTablePersonalisation="true" tableType="AnalyticalTable"
+			visible="{path: 'ui>/editable', formatter: '.onOverallQuotaFormatter'}" beforeRebindTable="onBeforeOverallQuotaRebindTable"
+			header="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>SmartTableHeaderText}" showRowCount="true"
+			requestAtLeastFields="CentralPurchaseContract,CentralPurchaseContractItem,DistributionKey" persistencyKey="keyOverallQuotaDetailsSmartTable"
+			enableAutoBinding="true" demandPopin="true" height="30rem" showFullScreenButton="true">
+			<smartTable:customToolbar>
+				<Toolbar id="idOveralQuotaToolbar">
+					<ToolbarSpacer id="idOveralQuotaToolbarSpacer"/>
+					<Button id="idOveralQuotaCollapse" tooltip="{i18n>CollapseAllOverallQuotaTable}" icon="sap-icon://collapse-all"
+						visible="{path: 'ui>/editable', formatter: '.onOverallQuotaFormatter'}" enabled="true" type="Transparent"
+						press="onHandleOverallQuotaCollapseAll"/>
+					<Button id="idOveralQuotaExpand" icon="sap-icon://expand-all" tooltip="{i18n>ExpandAllOverallQuotaTable}"
+						visible="{path: 'ui>/editable', formatter: '.onOverallQuotaFormatter'}" type="Transparent" press="onHandleOverallQuotaExpandAll"/>
+				</Toolbar>
+			</smartTable:customToolbar>
+		</smartTable:SmartTable>
+		<!--Info message in Edit mode -->
+		<MessageStrip id="idOverallQuotaMessage" type="Error" visible="{overallQuota>/showOverallQuotaErrorMsg}"
+			text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>OverallQuotaErrorMsg}" class="sapUiSmallMargin"></MessageStrip>
+		<!-- Table with Contracts -->
+		<smartTable:SmartTable id="idOverallQuotaDetailSmartTable" entitySet="QuotaAlias>/" tableBindingPath="QuotaAlias>/" tableType="Table"
+			useExportToExcel="false" useVariantManagement="false" useTablePersonalisation="true" showFullScreenButton="true"
+			persistencyKey="keyOverallQuotaDetailsSmartTable" enableAutoBinding="true" demandPopin="true"
+			visible="{path: 'ui>/editable', formatter: '.onOverallQuotaDistributionFormatter'}">
+			<smartTable:customToolbar>
+				<OverflowToolbar design="Transparent">
+					<Title
+						text="{ parts: [ 'i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>ContractsSmartTableHeaderTemplate', 'i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>SmartTableHeaderText', {path: 'QuotaAlias>/', formatter: '.formatOverallQuotaTitle'} ], formatter: 'formatMessage' }"></Title>
+					<ToolbarSpacer/>
+					<OverflowToolbarButton icon="sap-icon://edit" enabled="{ui>/editable}" visible="{= !${overallQuota>/showQuotaEdit} }"
+						tooltip="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>EditText}"
+						text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>EditText}" press=".handleOverallQuotaDialogEditPress"/>
+				</OverflowToolbar>
+			</smartTable:customToolbar>
+			<table:Table selectionMode="None" fixedRowCount="{= ${QuotaAlias>/}.length - 1}">
+				<table:rowSettingsTemplate>
+					<table:RowSettings highlight="{path: 'QuotaAlias>Status', formatter: '.getDistributionLineColor'}"/>
+				</table:rowSettingsTemplate>
+				<table:Column id="idCentralPurchaseContract">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>CentralContractNumber}"
+						id="idCentralPurchaseContractText"/>
+					<table:template>
+						<Text text="{QuotaAlias>CentralPurchaseContract}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData"
+							value='\{"columnKey": "CentralPurchaseContract","columnIndex":"0","leadingProperty": "CentralPurchaseContract"}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idCentralPurchaseContractItem">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>ItemNumber}"
+						id="idCentralPurchaseContractItemText"/>
+					<table:template>
+						<Text text="{QuotaAlias>CentralPurchaseContractItem}" visible="{= !!${QuotaAlias>Status} }"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData"
+							value='\{"columnKey": "CentralPurchaseContractItem","columnIndex":"1","leadingProperty": "CentralPurchaseContractItem"}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idDistributionKey">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>DistributionLineNumber}"
+						id="idDistributionKeyText"/>
+					<table:template>
+						<Link text="{QuotaAlias>DistributionKey}" press="handleDistributionKeyPress" visible="{= !!${QuotaAlias>Status} }"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value='\{"columnKey": "DistributionKey","columnIndex":"2","leadingProperty": "DistributionKey"}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idSupplier">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>SupplierNumber}" id="idSupplierText"/>
+					<table:template>
+						<Text text="{QuotaAlias>Supplier}" visible="{= !!${QuotaAlias>Status} }"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value='\{"columnKey": "Supplier","columnIndex":"3","leadingProperty": "Supplier"}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idSupplierName">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>SupplierName}" id="idSupplierNameText"/>
+					<table:template>
+						<Text text="{QuotaAlias>SupplierName}" visible="{= !!${QuotaAlias>Status} }"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value='\{"columnKey": "SupplierName","columnIndex":"4","leadingProperty": "SupplierName"}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idValidFrom">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>ValidFrom}" id="idvalidFromText"/>
+					<table:template>
+						<Text text="{path:'QuotaAlias>DistValidFrom', type:'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+							visible="{= !!${QuotaAlias>Status} }"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value='\{"columnKey": "DistValidFrom","columnIndex":"5","leadingProperty": "DistValidFrom"}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idValidTo">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>ValidTo}" id="idvalidtoText"/>
+					<table:template>
+						<Text text="{path:'QuotaAlias>DistValidTo', type:'sap.ui.model.type.DateTime', formatOptions:{ pattern:'dd.MM.yyyy' }}"
+							visible="{= !!${QuotaAlias>Status} }"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value='\{"columnKey": "DistValidTo","columnIndex":"6","leadingProperty": "DistValidTo"}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idQuota">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>QuotaNumber}" id="idQuotaText"/>
+					<table:template>
+						<HBox>
+							<Text visible="{= !${overallQuota>/showQuotaEdit} || !${QuotaAlias>Status} }"
+								text="{path: 'QuotaAlias>Quota', formatter: '.formatTextQuotaValue'}"/>
+							<Input visible="{= !!${QuotaAlias>Status} &amp;&amp; !!${overallQuota>/showQuotaEdit} }" change=".handleUpdateQuotaChange"
+								valueState="{path: 'QuotaAlias>Quota', formatter: '.formatQuotaValueState'}"
+								value="{ path: 'QuotaAlias>Quota', formatter: '.formatInputQuotaValue', type: 'sap.ui.model.odata.type.Decimal' }"/>
+						</HBox>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value='\{"columnKey": "Quota","columnIndex":"7","leadingProperty": "Quota"}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idStatus">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>ItemDistributionStatus}" id="idStatusText"/>
+					<table:template>
+						<ObjectStatus class="sapUiTinyMarginTop sapUiSmallMarginBottom" visible="{= !!${QuotaAlias>Status} }" text="{QuotaAlias>Status_Des}"
+							icon="{path: 'QuotaAlias>Status', formatter: '.getDistrStatusIcon'}" state="{path: 'QuotaAlias>Status', formatter: '.getDistrStatusState'}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value='\{"columnKey": "Status_Des","columnIndex":"8","leadingProperty": "Status_Des"}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idPlant">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>Plant}" id="idPlantText"/>
+					<table:template>
+						<Text text="{QuotaAlias>Plant}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value='\{"columnKey": "Plant","columnIndex":"9","leadingProperty": "Plant"}'/>
+					</table:customData>
+				</table:Column>
+				<table:Column id="idCompanyCode">
+					<Label text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>CompanyCode}" id="idCompanyCodeText"/>
+					<table:template>
+						<Text visible="{= !!${QuotaAlias>Status} }" text="{QuotaAlias>CompanyCodeName} ({QuotaAlias>CompanyCode})"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value='\{"columnKey": "CompanyCode","columnIndex":"10","leadingProperty": "CompanyCode"}'/>
+					</table:customData>
+				</table:Column>
+			</table:Table>
+		</smartTable:SmartTable>
+		<buttons>
+			<Button id="idButtonSave" type="Emphasized" text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>SaveText}"
+				press="handleOverallQuotaDialogSavePress" visible="{path: 'ui>/editable', formatter: '.onOverallQuotaDistributionFormatter'}"
+				enabled="{= !!${overallQuota>/showQuotaEdit} &amp;&amp; !!(${overallQuota>/updatedPaths}.length) &amp;&amp; !${overallQuota>/hasErrors} }"/>
+			<Button text="{i18n|sap.suite.ui.generic.template.ObjectPage|C_CntrlPurContrItmCndnAmountTP>CloseText}"
+				press="handleOverallQuotaDialogClosePress" id="idButtonClose"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,8 @@
+<!-- Use stable and unique id's!-->
+<core:FragmentDefinition xmlns:core='sap.ui.core' xmlns="sap.m">
+	<Button id="idHierCtrPFORelatedLinkBtn" text="{i18n>PFORelatedLink}" icon="sap-icon://process"
+		press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.onPFOLinkPress"/>
+	<Button id="idAlternativePartsButton" text="{i18n>AlternativePartsButtonLabel}" tooltip="{i18n>AlternativePartsButtonLabel}"
+		press=".extension.vwks.nlp.s2p.mm.pctrcentral.manage.ObjectPageExt.handleAlternativePartCall"
+		visible="{= ${ProcessIndicator} === 'P' ? true : false}"/>
+</core:FragmentDefinition>
